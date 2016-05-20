@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
 
   root "rooms#user_type"
+
+  get '/ownerlogin' => 'sessions#newowner'
+  post '/ownerlogin' => 'sessions#createowner'
+  get '/ownerlogout' => 'sessions#destroyowner'
+  get '/renterlogin' => 'sessions#newrenter'
+  post '/renterlogin' => 'sessions#createrenter'
+  get '/renterlogout' => 'sessions#destroyrenter'
+
   get '/owners/signup' => 'owners#new'
   post '/owners/signup' => 'owners#create'
 
@@ -12,9 +20,7 @@ Rails.application.routes.draw do
   resources :renters
 
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+
 
 
 

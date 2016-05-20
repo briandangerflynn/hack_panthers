@@ -32,6 +32,7 @@ class RentersController < ApplicationController
   def update
     @renter = Renter.find(params[:id])
     @renter.update_attributes(renter_params)
+    redirect_to "/renters/#{@renter['id']}"
   end
 
   def destroy
