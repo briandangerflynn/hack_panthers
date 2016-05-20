@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
+  root "rooms#user_type"
   resources :owners
   resources :rooms
   resources :renters
 
-  namespace :renters do
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/signup' => 'renters#new'
-  post '/signup' => 'renters#create'
-end
-end
+  get '/owners/signup' => 'owners#new'
+  post '/owners/signup' => 'owners#create'
+
+  get '/renters/signup' => 'renters#new'
+  post '/renters/signup' => 'renters#create'
