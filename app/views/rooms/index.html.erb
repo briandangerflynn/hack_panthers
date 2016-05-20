@@ -15,9 +15,8 @@
 <h1>Available Rooms</h1>
   <% @rooms.each do |room| %>
   <h3> <a href='/rooms/<%= room['id'] %>'><%= room.title %></a></h3>
-  <p><%= room.borough %></p>
+  <p><%= room.borough %>
   <p><%= room.description %></p>
-  <p><%= room.available %></p>
 <% end %>
 
 

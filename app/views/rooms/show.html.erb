@@ -6,7 +6,7 @@
   <iframe width="640" height="360" src="https://www.youtube.com/embed/<%= @room.video_url %>" frameborder="0" allowfullscreen></iframe>
 
 <p>
-  <%= @room.borough %><br>
+  <%= @room.borough %>
   <%= @room.neighborhood %><br>
   <%= @room.address %><br>
   <%= @room.description %><br>
@@ -22,6 +22,8 @@
   Room available: No
   <% end %>
 </p>
+
+<%= link_to 'Back', '/rooms' %>
 
 
 
