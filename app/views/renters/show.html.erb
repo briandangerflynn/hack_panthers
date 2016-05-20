@@ -1,0 +1,21 @@
+<br>
+<h2><%= @renter.name.capitalize %></h2>
+<br>
+<h4><%= @renter.created_at.strftime("Member Since %B %d, %Y") %></h4>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/PoxpVZ2KTYI" frameborder="0" allowfullscreen></iframe>
+<br>
+<h4><%= @renter.description %></h4>
+  <br>
+  <% if @renter.has_pets == true %>
+    <%= "I've got a pet!" %>
+  <% else %>
+    <%= "No pets here!"%>
+  <br><br>
+  <%= link_to 'back', rooms_path %>
+  <% end %>
+
+
+<br><br>
+<%= link_to 'edit', edit_renter_path(@renter) %>
+<%= link_to 'delete', @renter, method: :delete %>
+

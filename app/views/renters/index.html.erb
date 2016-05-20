@@ -1,0 +1,14 @@
+<div id="allrenters">
+  <% @renters.each do |r| %>
+    <h2><%= link_to r.name.capitalize, r %></h2>
+    <h3><%= r.created_at.strftime("Member since %B %d, %Y") %></h3>
+    <br>
+    <% if r.has_pets == true %>
+    <%= "I've got a pet!" %>
+  <% else %>
+    <%= "No pets here!"%>
+  <br><br>
+    <%= r.description %>
+  <% end %>
+  <% end %>
+</div>

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/signup' => 'owners#new'
-  post '/owners' => 'owners#create'
+  get '/owners/signup' => 'owners#new'
+  post '/owners/signup' => 'owners#create'
 
-end
+  get '/renters/signup' => 'renters#new'
+  post '/renters/signup' => 'renters#create'

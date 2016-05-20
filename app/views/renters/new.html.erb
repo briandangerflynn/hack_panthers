@@ -1,0 +1,14 @@
+<h1>Sign Up to Get Started</h1>
+
+  <%= form_for :renter, url: {action: "create"} do |f| %>
+    <%= label(:renter, :name) %>
+    <%= f.text_field :name %>
+      <br><br>
+    <%= label(:renter, :email) %>
+    <%= f.text_field :email %>
+      <br><br>
+    <%= label(:renter, :password) %>
+    <%= f.password_field :password %>
+      <br><br>
+    <%= f.submit "Add Renter" %>
+  <% end %>
