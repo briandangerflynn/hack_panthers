@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for @owner, url: {action: 'create'} do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -11,21 +12,11 @@
     <%= f.text_field :password %>
     <br /><br />
 
-    <input name="user_type" type:"checkbox"
-
-<%= f.label :video_url %>
-    <%= f.text_field :video_url %>
-    <br /><br />
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br /><br />
-
-    <%= f.label :has_pets %>
-    <%= f.text_field :has_pets %>
-    <br /><br />
-
     <%= f.submit %>
   <% end %>
 
-<p><%= link_to 'cancel', owners_path %></p>
+<p><%= link_to 'cancel', "/" %></p>
+<br>
+<br>
+<%= link_to 'Already have an account? Log in', "/ownerlogin" %></p>
+</div>

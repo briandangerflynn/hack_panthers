@@ -9,7 +9,11 @@
         <div class="row">
             <div class="usertype col s4 offset-s1">
                 <h6>Owner</h6>
+                <% if current_owner %>
+                    <a href="../owners/<%= current_owner['id'] %>"><%= image_tag("owner.svg", class: "owner_icon") %></a>
+                <% else %>
                 <a href="../owners/signup"><%= image_tag("owner.svg", class: "owner_icon") %></a>
+                <% end %>
             </div>
             <div class="usertype col s4 offset-s2">
                 <h6>Renter</h6>

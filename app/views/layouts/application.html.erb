@@ -7,17 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="nav">
-     <% if current_renter %>
-       <p id="username">Signed in as <%= current_renter.email %></p>
-       <%= link_to "Logout", '/logout', :class=>"navlink" %>
-     <% else %>
-       <%= link_to 'Login', '/login' %>
-       <%= link_to 'Signup', '/signup', :class=>"navlink" %>
-     <% end %>
-     <a href="/" class="navlink">Home</a>
-
- </nav>
 
 
 <%= yield %>

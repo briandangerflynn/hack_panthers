@@ -1,4 +1,18 @@
-<h1> Find Your Neighborhood! </h1>
+
+
+<nav class="nav">
+    <% if current_renter %>
+       Signed in as <%= current_renter.email %>
+       <%= link_to "Logout", '/renterlogout', :class=>"navlink" %>
+    <% else %>
+       <%= link_to 'Login', '/renterlogin' %>
+       <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
+    <% end %>
+     <a href="/" class="navlink">Home</a>
+
+ </nav>
+
+ <h1> Find Your Neighborhood! </h1>
 
 <form class="form" method="get">
   <label for="borough">Choose a Borough</label>

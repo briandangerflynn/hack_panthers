@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
 
 
   def current_owner
-   @current_owner ||= Owner.find(session[:owner_id]) if session[:owner_id]
+    if session[:owner_id] != ""
+     @current_owner ||= Owner.find(session[:owner_id]) if session[:owner_id]
+    end
   end
 
   helper_method :current_owner
@@ -14,12 +16,14 @@ class ApplicationController < ActionController::Base
    redirect_to '/login' unless current_owner
   end
 
-
-
   def current_renter
-   @current_renter ||= Renter.find(session[:renter_id]) if session[:renter_id]
+    # binding.pry
+    if session[:renter_id] != ""
+     @current_renter ||= Renter.find(session[:renter_id]) if session[:renter_id]
+   end
   end
-    helper_method :current_renter
+
+  helper_method :current_renter
 
   def authorize_renter
     redirect_to '/login' unless current_renter
