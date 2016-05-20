@@ -20,6 +20,9 @@ class RoomsController < ApplicationController
   def destroy
   end
 
+  def user_type
+  end
+
   private
 
 
