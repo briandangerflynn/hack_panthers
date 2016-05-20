@@ -37,4 +37,7 @@
 
  <%= f.submit %>
 <% end %>
-<% button_to 'Cancel', @room %>
+<%= button_to 'Cancel', @room %>
+<br>
+<%= link_to 'Delete', @room, method: :delete %>
+
