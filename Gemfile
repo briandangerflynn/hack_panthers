@@ -46,10 +46,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-<<<<<<< HEAD
-
-=======
-  gem 'bcrypt', '~> 3.1.7'
->>>>>>> d54badc6fc5cdd3155898235b4b0f599d8c8b28a
 end
 
