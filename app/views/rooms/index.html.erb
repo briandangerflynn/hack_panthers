@@ -1,0 +1,22 @@
+<h1> Find Your Neighborhood! </h1>
+
+<form class="form" method="get">
+  <label for="borough">Choose a Borough</label>
+      <select name="borough">
+        <option value="Manhattan">Manhattan</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Queens">Queens</option>
+        <option value="StatenIsland">Staten Island</option>
+        <option value="Bronx">The Bronx</option>
+      </select>
+</form>
+
+
+<h1>Available Rooms</h1>
+  <% @rooms.each do |room| %>
+  <h3> <a href='/rooms/<%= room['id'] %>'><%= room.title %></a></h3>
+  <p><%= room.borough %>
+  <p><%= room.description %></p>
+<% end %>
+
+

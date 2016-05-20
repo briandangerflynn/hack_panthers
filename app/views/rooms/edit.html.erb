@@ -1,0 +1,50 @@
+<%= form_for @room, url: {action: 'update'} do |f| %>
+
+  <%= f.label :title %>
+  <br>
+  <%= f.text_field :title, value: @room.title %>
+  <br>
+  <%= f.label :address %>
+  <br>
+  <%= f.text_field :address, value: @room.address %>
+  <br>
+  <%= f.label :borough %>
+  <br>
+  <%= f.text_field :borough, value: @room.borough %>
+  <br>
+  <%= f.label :neighborhood %>
+  <br>
+  <%= f.text_field :neighborhood, value: @room.neighborhood  %>
+  <br>
+  <%= f.label :description %>
+  <br>
+  <%= f.text_field :description, value: @room.description %>
+  <br>
+  <%= f.label :price %>
+  <br>
+  <%= f.text_field :price, value: @room.price %>
+  <br>
+  <% if @room.pets_allowed == true %>
+  <% p = 'yes' %>
+  <% else %>
+  <% p = 'no' %>
+  <% end %>
+  <%= f.label :pets_allowed %>
+  <%= f.text_field :pets_allowed, value: @room.pets_allowed, placeholder: p %>
+  <br>
+  <%= f.label :available %>
+  <%= f.text_field :available, value: @room.available %>
+  <br>
+
+  <%= f.label :video_url %>
+  <%= f.text_field :video_url, value: @room.video_url %>
+  <br>
+
+ <%= f.submit %>
+ <br>
+<% end %>
+  <button> <%= link_to 'Cancel', '/rooms' %></button>
+  <br><br>
+<%= link_to 'Delete', @room, method: :delete %>
+<br>
+
