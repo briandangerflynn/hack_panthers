@@ -20,18 +20,6 @@
  </nav>
 
 
-<nav>
-     <% if current_user %>
-       <p id="username">Signed in as <%= current_user.email %></p>
-       <p class="blue"><%= link_to "Logout", '/logout' %></p>
-     <% else %>
-       <%= link_to 'Login', '/login' %>
-       <%= link_to 'Signup', '/signup', :class=>"navlink" %>
-     <% end %>
-     <a href="/" class="navlink">Home</a>
-
- </nav>
-
 <%= yield %>
 
 
