@@ -1,0 +1,12 @@
+
+<br><br>
+
+<h1>Owners!</h1>
+  <% @owners.each do |owner| %>
+    <h2>Name: <%= link_to owner.name, owner %></h2>
+
+
+  <% end %>
+
+  <br /><br />
+  <h3><%= link_to 'Sign up! Be an owner!', new_owner_path %></h3>

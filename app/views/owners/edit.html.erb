@@ -1,0 +1,28 @@
+<%= form_for @owner, url: {action: 'update'} do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, value: @owner.name %>
+  <br /><br />
+
+  <%= f.label :email %>
+  <%= f.text_field :email, value: @owner.email %>
+  <br /><br />
+
+  <%= f.label :password_digest %>
+  <%= f.text_field :password_digest, value: @owner.password_digest %>
+  <br /><br />
+
+  <%= f.label :video_url %>
+  <%= f.text_field :video_url, value: @owner.video_url %>
+  <br /><br />
+
+  <%= f.label :description %>
+  <%= f.text_field :description, value: @owner.description %>
+  <br /><br />
+
+  <%= f.label :has_pets %>
+  <%= f.text_field :has_pets, value: @owner.has_pets %>
+  <br /><br />
+
+  <%= f.submit %>
+<% end %>
+<%= link_to 'cancel', @owner %>
