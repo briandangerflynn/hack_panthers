@@ -1,6 +1,10 @@
 <h1>Add a Room</h1>
 <%= form_for @room, url: {action: 'create'} do |f| %>
 
+  <%= f.label :title %>
+  <br>
+  <%= f.text_field :title %>
+  <br>
   <%= f.label :address %>
   <br>
   <%= f.text_field :address %>
