@@ -21,6 +21,7 @@ class RoomsController < ApplicationController
   def edit
     id = params[:id]
     @room = Room.find_by_id(params[:id])
+
   end
 
   def update
@@ -28,17 +29,16 @@ class RoomsController < ApplicationController
     @room = Room.find_by_id(id)
     @room.update_attributes(room_params)
 
-    redirect_to '/rooms'
+    redirect_to "/rooms/#{id}"
+    # redirect_to(:back)
   end
 
   def destroy
-
-
-    id = params[:id]
-    @room = Room.find_by_id(id)
+    # id = params[:id]
+    @room = Room.find_by(id: params[:id])
     @room.destroy
 
-    redirect_to '/rooms'
+    # redirect_to '/rooms'
   end
 
   private

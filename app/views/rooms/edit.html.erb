@@ -24,8 +24,13 @@
   <br>
   <%= f.text_field :price, value: @room.price %>
   <br>
+  <% if @room.pets_allowed == true %>
+  <% p = 'yes' %>
+  <% else %>
+  <% p = 'no' %>
+  <% end %>
   <%= f.label :pets_allowed %>
-  <%= f.text_field :pets_allowed, value: @room.pets_allowed %>
+  <%= f.text_field :pets_allowed, value: @room.pets_allowed, placeholder: p %>
   <br>
   <%= f.label :available %>
   <%= f.text_field :available, value: @room.available %>
@@ -36,8 +41,10 @@
   <br>
 
  <%= f.submit %>
+ <br>
 <% end %>
-<%= button_to 'Cancel', @room %>
-<br>
+  <button> <%= link_to 'Cancel', '/rooms' %></button>
+  <br><br>
 <%= link_to 'Delete', @room, method: :delete %>
+<br>
 
