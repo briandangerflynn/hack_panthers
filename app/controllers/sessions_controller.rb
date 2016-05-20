@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     end
   else
     redirect_to '/login'
-    flash[:error] "Invalid Username/password"
+    # flash[:error] "Invalid Username/password"
   end
 
 
@@ -40,6 +40,8 @@ class SessionsController < ApplicationController
     session[:renter_id] = ""
    redirect_to '/login'
  end
+end
+end
 
 end
 
