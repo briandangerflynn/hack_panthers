@@ -1,25 +1,46 @@
 <div class="container">
-  <h2><%= @room.title %></h2><br>
-    <% @room.video_url = @room.video_url.split('=')[1] %>
-
-    <iframe width="640" height="360" src="https://www.youtube.com/embed/<%= @room.video_url %>" frameborder="0" allowfullscreen></iframe>
-    <p>
-    <%= @room.borough %><br>
-    <%= @room.neighborhood %><br>
-    <%= @room.address %><br>
-    <%= @room.description %><br>
-    $ <%= @room.price %><br>
-    <% if @room.pets_allowed == true %>
-    Pets allowed: Yes
+<nav class="nav">
+    <% if current_renter %>
+       Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
+       <%= link_to "Logout", '/renterlogout', :class=>"navlink" %>
     <% else %>
-    Pets allowed: No
+       <%= link_to 'Login', '/renterlogin' %>
+       <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
     <% end %>
-    <% if @room.available == true %><br>
-    Room available: Yes
-    <% else %>
-    Room available: No
-    <% end %>
-  </p>
+     <a href="/" class="navlink">Home</a>
 
-  <%= link_to 'Back', '/rooms' %>
+ </nav>
+
+<h2><%= @room.title %></h2><br>
+<hr>
+
+<ziggeo ziggeo-video=<%= @room.video_url %>
+          ziggeo-width=320
+          ziggeo-height=240>
+</ziggeo>
+
+
+
+<p>
+  <%= @room.borough %><br>
+  <%= @room.neighborhood %><br>
+  <%= @room.address %><br>
+  <%= @room.description %><br>
+  $ <%= @room.price %><br>
+  <% if @room.pets_allowed == true %>
+  Pets allowed: Yes
+  <% else %>
+  Pets allowed: No
+  <% end %>
+  <% if @room.available == true %><br>
+  Room available: Yes
+  <% else %>
+  Room available: No
+  <% end %>
+</p>
+
+<%= link_to 'Back', '/rooms' %>
+
 </div>
+
+
