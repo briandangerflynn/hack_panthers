@@ -1,42 +1,40 @@
-<h1>Add a Room</h1>
-<%= form_for @room, url: {action: 'create'} do |f| %>
+<div class="container">
+  <h1>Add a Room</h1>
+    <%= form_for @room, url: {action: 'create'} do |f| %>
 
-  <%= f.label :title %>
-  <br>
-  <%= f.text_field :title %>
-  <br>
-  <%= f.label :address %>
-  <br>
-  <%= f.text_field :address %>
-  <br>
-  <%= f.label :borough %>
-  <br>
-  <%= f.text_field :borough %>
-  <br>
-  <%= f.label :neighborhood %>
-  <br>
-  <%= f.text_field :neighborhood  %>
-  <br>
-  <%= f.label :description %>
-  <br>
-  <%= f.text_field :description %>
-  <br>
-  <%= f.label :price %>
-  <br>
-  <%= f.text_field :price %>
-  <br>
-  <%= f.label :pets_allowed %>
-  <%= f.check_box :pets_allowed %>
-  <br>
-  <%= f.label :available %>
-  <%= f.check_box :available %>
-  <br>
-
-  <%= f.label :video_url %>
-  <%= f.text_field :video_url %>
-  <br>
-
- <%= f.submit "Add a Room" %>
-<% end %>
-
-
+      <%= f.label :title %>
+        <br>
+      <%= f.text_field :title %>
+        <br>
+      <%= f.label :address %>
+        <br>
+      <%= f.text_field :address %>
+        <br>
+      <%= f.label :borough %>
+        <br>
+      <%= f.text_field :borough %>
+        <br>
+      <%= f.label :neighborhood %>
+        <br>
+      <%= f.text_field :neighborhood  %>
+        <br>
+      <%= f.label :description %>
+        <br>
+      <%= f.text_field :description %>
+        <br>
+      <%= f.label :price %>
+        <br>
+      <%= f.text_field :price %>
+        <br>
+      <%= f.label :pets_allowed %>
+      <%= f.check_box :pets_allowed %>
+        <br>
+      <%= f.label :available %>
+      <%= f.check_box :available %>
+        <br>
+      <%= f.label :video_url %>
+      <%= f.text_field :video_url %>
+        <br>
+      <%= f.submit "Add a Room" %>
+  <% end %>
+</div>

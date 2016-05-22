@@ -1,29 +1,27 @@
-<nav class="nav">
-    <% if current_owner %>
-       Signed in as <%= current_owner.email %> |
-       <%= link_to "Logout", '/ownerlogout', :class=>"navlink" %> |
-    <% else %>
-       <%= link_to 'Login', '/ownerlogin' %>
-       <%= link_to 'Signup', 'owners/signup', :class=>"navlink" %>
-    <% end %>
-     <a href="/" class="navlink">Home</a>
+<div class="container">
+  <nav class="nav">
+      <% if current_owner %>
+         Signed in as <%= current_owner.email %> |
+         <%= link_to "Logout", '/ownerlogout', :class=>"navlink" %> |
+      <% else %>
+         <%= link_to 'Login', '/ownerlogin' %>
+         <%= link_to 'Signup', 'owners/signup', :class=>"navlink" %>
+      <% end %>
+       <a href="/" class="navlink">Home</a>
+  </nav>
+    <br><br>
+  <h3><%= @owner.name %></h3>
+  <h4>Email: <%= @owner.email %></h4>
+  <h4>Description: <%= @owner.description %></h4>
+  <h4>Has pets?: <%= @owner.has_pets %></h4>
+  <h4>Video: <%= @owner.video_url %></h4>
+  <h5><a href="#">Add Room to Rent</a></h5>
 
-</nav>
-<br>
-<br>
+  <br />
+  <h5><%= link_to 'back', owners_path %></h5>
 
-<h3><%= @owner.name %></h3>
-<h4>Email: <%= @owner.email %></h4>
-<h4>Description: <%= @owner.description %></h4>
-<h4>Has pets?: <%= @owner.has_pets %></h4>
-<h4>Video: <%= @owner.video_url %></h4>
-<h5><a href="#">Add Room to Rent</a></h5>
+  <h5><%= link_to 'edit', edit_owner_path(@owner) %></h5>
 
-<br />
-<h5><%= link_to 'back', owners_path %></h5>
-
-<h5><%= link_to 'edit', edit_owner_path(@owner) %></h5>
-
-<h5><%= link_to 'delete', @owner, method: :delete %></h5>
-
+  <h5><%= link_to 'delete', @owner, method: :delete %></h5>
+</div>
 

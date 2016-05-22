@@ -1,22 +1,31 @@
 <div class="container">
-<%= form_for @owner, url: {action: 'create'} do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br /><br />
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <h2 class="center-align">Sign Up to Get Started</h2>
+            <div class="input-field">
+                <%= form_for @owner, url: {action: 'create'} do |f| %>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+                <br /><br />
+            </div>
+            <div class="input-field">
+                <%= f.label :email %>
+                <%= f.text_field :email %>
+                <br /><br />
+            </div>
+            <div class="input-field">
+                <%= f.label :password %>
+                <%= f.text_field :password %>
+                <br /><br />
+            </div>
+                <%= f.submit "Sign Up" %>
+                <% end %>
+            <p class="center-align"><%= link_to 'cancel', "/" %></p>
+                <br>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br /><br />
-
-    <%= f.label :password %>
-    <%= f.text_field :password %>
-    <br /><br />
-
-    <%= f.submit %>
-  <% end %>
-
-<p><%= link_to 'cancel', "/" %></p>
-<br>
-<br>
-<%= link_to 'Already have an account? Log in', "/ownerlogin" %></p>
+            <p class="center-align">
+                <%= link_to 'Already have an account? Log in', "/ownerlogin" %></p>
+            </p>
+        </div>
+    </div>
 </div>

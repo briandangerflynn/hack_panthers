@@ -1,4 +1,4 @@
-<div id="allrenters">
+<div class="container">
   <% @renters.each do |r| %>
     <h2><%= link_to r.name.capitalize, r %></h2>
     <h3><%= r.created_at.strftime("Member since %B %d, %Y") %></h3>
