@@ -17,7 +17,7 @@ def newrenter
      # Save the owner id inside the browser cookie. This is how we keep the owner
      # logged in when they navigate around our website.
      session[:owner_id] = owner.id
-     redirect_to '/owners'
+     redirect_to "/owners/#{owner.id}"
      # session[:owner_id] = owner.id
      # redirect_to '/owners'
   else
@@ -34,7 +34,7 @@ end
      # Save the user id inside the browser cookie. This is how we keep the user
      # logged in when they navigate around our website.
      session[:renter_id] = renter.id
-     redirect_to '/renters'
+     redirect_to '/rooms'
     else
       redirect_to '/renterlogin'
     end

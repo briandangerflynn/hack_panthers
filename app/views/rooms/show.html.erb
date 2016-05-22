@@ -1,3 +1,15 @@
+<nav class="nav">
+    <% if current_renter %>
+       Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
+       <%= link_to "Logout", '/renterlogout', :class=>"navlink" %>
+    <% else %>
+       <%= link_to 'Login', '/renterlogin' %>
+       <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
+    <% end %>
+     <a href="/" class="navlink">Home</a>
+
+ </nav>
+
 <h2><%= @room.title %></h2><br>
 <hr>
 
