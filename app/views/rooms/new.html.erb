@@ -1,4 +1,56 @@
-<h1>Add a Room</h1>
+<h1>Add a room</h1>
+
+<!-- <script>
+  ZiggeoApi.Videos.index({}, {
+        success: function (args, videos) {
+            videos.forEach(function (video) {
+                $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + video.token + "'></ziggeo>");
+            });
+            if ($('#reaction_wall').html() == ''){
+                  $("#reaction_wall").append("<p>No videos posted yet</p>")
+                }
+        }
+    });
+</script> -->
+
+<button id="record">Record a Video of your Room</button>
+
+<div id='recorder'>
+</div>
+
+<script>
+  $("#record").on("click", function () {
+      console.log("button works")
+      $("#record").hide();
+      $("#recorder").show();
+      ZiggeoApi.Embed.embed('#recorder', {
+          width: 450,
+          height: 280,
+          limit: 120
+      });
+  });
+</script>
+
+<div id="reaction_wall">
+</div>
+
+<script>
+  ZiggeoApi.Events.on("submitted", function (data) {
+      $("#video_token").val(data.video.token)
+      $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
+      $("#recorder").hide();
+      $("#record").show();
+  });
+</script>
+
+
+
+
+
+
+
+
+
 <%= form_for @room, url: {action: 'create'} do |f| %>
 
   <%= f.label :title %>
@@ -32,11 +84,13 @@
   <%= f.check_box :available %>
   <br>
 
-  <%= f.label :video_url %>
-  <%= f.text_field :video_url %>
+  <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <br>
 
  <%= f.submit "Add a Room" %>
 <% end %>
+
+
+
 
 
