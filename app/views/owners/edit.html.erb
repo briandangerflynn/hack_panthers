@@ -16,61 +16,83 @@
   </div>
   </div>
 </nav>
+
 <div class="container">
-<button id="record">Record a Video to Introduce Yourself!</button>
-
-<div id='recorder'>
-</div>
-
-<script>
-  $("#record").on("click", function () {
-      console.log("button works")
-      $("#record").hide();
-      $("#recorder").show();
-      ZiggeoApi.Embed.embed('#recorder', {
-          width: 450,
-          height: 280,
-          limit: 120
-      });
-  });
-</script>
-
-<div id="reaction_wall">
-</div>
-
-<script>
-  ZiggeoApi.Events.on("submitted", function (data) {
-      var token = data.video.token
-      // var image_url = ZiggeoApi.Videos.image(token);
-      // $("#thumbnail").attr("src",image_url);
-      $("#video_token").val(token)
-      $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
-      $("#recorder").hide();
-      $("#record").show();
-  });
-</script>
+  <div id="owner-edit-page">
 
 
-<%= form_for @owner, url: {action: 'update'} do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, value: @owner.name %>
-  <br /><br />
+  <h2>Update Your Profile</h2>
 
-  <%= f.label :email %>
-  <%= f.text_field :email, value: @owner.email %>
-  <br /><br />
+  <p>Let renters get to know you. Add a video to your profile introducing yourself.</p>
+  <% if @owner.video_url == "" %>
+  <button id="record">Record Profile Video</button>
+  <% else %>
+  <button id="record">Re-Record Profile Video</button>
+  <% end %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description, value: @owner.description %>
-  <br /><br />
+  <br><br>
 
-  <%= f.label :has_pets %>
-  <%= f.text_field :has_pets, value: @owner.has_pets %>
-  <br /><br />
 
-  <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
+  <script>
+    $("#record").on("click", function () {
+        console.log("button works")
+        $("#record").hide();
+        $("#recorder").show();
+        popup = ZiggeoApi.Embed.popup({
+            width: 450,
+            height: 280,
+            limit: 120
+        });
+    });
+  </script>
 
-  <%= f.submit %>
-<% end %>
-<%= link_to 'cancel', @owner %>
+  <p>Current profile video:</p>
+  <div id="recorded-vid">
+  <ziggeo ziggeo-video=<%= @owner.video_url %>
+            ziggeo-width=320
+            ziggeo-height=240>
+  </ziggeo>
+  </div>
+
+  <script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+        var token = data.video.token
+        $('#recorded-vid').html("")
+        popup.hidePopup();
+
+        // var image_url = ZiggeoApi.Videos.image(token);
+        // $("#thumbnail").attr("src",image_url);
+        $("#video_token").val(token)
+        $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
+        $("#record").show().text('Re-Record');
+    });
+  </script>
+
+  <br>
+
+  <%= form_for @owner, url: {action: 'update'} do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, value: @owner.name %>
+    <br /><br />
+
+    <%= f.label :email %>
+    <%= f.text_field :email, value: @owner.email %>
+    <br /><br />
+
+    <%= f.label :description %>
+    (tell us about yourself!)
+    <%= f.text_field :description, value: @owner.description %>
+    <br /><br />
+
+    <%= f.label :has_pets %>
+    <%= f.text_field :has_pets, value: @owner.has_pets %>
+    <br /><br />
+
+    <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
+
+    <%= f.submit %>
+  <% end %>
+  <br>
+  <%= link_to 'cancel', @owner %>
+  </div>
 </div>

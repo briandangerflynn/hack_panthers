@@ -6,6 +6,7 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find_by(id: params[:id])
+    @rooms = Room.where(user_id: "#{@owner.id}")
   end
 
   def new
