@@ -1,25 +1,47 @@
-<div id="landing" class="blue">
+<!-- <div id="landing">
     <div class="container">
         <div class="row">
             <div class="col s8 offset-s2">
-                <h1 id="landing-logo">SeenicView</h1>
-                <h5 id="landing-tagline">Use videos to find great roommates!</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="usertype col s4 offset-s1">
-                <h6>Owner</h6>
-                <% if current_owner %>
-                    <a href="../owners/<%= current_owner['id'] %>"><%= image_tag("owner.svg", class: "owner_icon") %></a>
-                <% else %>
-                <a href="../owners/signup"><%= image_tag("owner.svg", class: "owner_icon") %></a>
-                <% end %>
-            </div>
-            <div class="usertype col s4 offset-s2">
-                <h6>Renter</h6>
-                <a href="/rooms"><%= image_tag("renter.svg", class: "renter_icon") %></a>
+                <h1 id="landing-logo" class="center-align">SeenicView</h1>
+                <h5 id="landing-tagline" class="center-align">Use videos to find great roommates!</h5>
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<div id="headerbar">
+    <h2 class="center-align white-text"><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</h2>
+    </div>
+<body class="frontpage">
+<div class="parallax-container">
+        <div class="parallax"><img src="http://properlocations.com/wp-content/uploads/2011/04/hp_featured_NYC0203.png"></div>
+    </div>
+        <div class="frontpage" id="midsection">
+            <div class="row">
+                <h4 class="center-align"><span class="white-text">Meet your future roommates.</span></h4>
+                    <br><br>
+                    <div class="usertype col s4">
+                        <h5 class="center-align"><span class="white-text">Post Your Room</span></h5>
+                            <% if current_owner %>
+                                <a href="../owners/<%= current_owner['id'] %>"><%= image_tag("owner.svg", id:"icon") %></a>
+                            <% else %>
+                                <a href="../owners/signup"><%= image_tag("owner.svg", id:"icon") %></a>
+                            <% end %>
+                    </div>
+                    <div class="col s4">
+                        <p class="center-align white-text" id="abouttext">Love searching for new roommates? Neither do we. Homeo is a place for people with open rooms
+                        to share their space with people they haven't met yet. Get to know a little bit about a person before even meeting them.
+                        A picture says a thousand words, just think how many a video says.</p>
+                    </div>
+                    <div class="usertype col s4">
+                        <h5 class="center-align"><span class="white-text">Find A Room</span></h5>
+                            <a href="/rooms"><%= image_tag("renter.svg", class:"center-align", id:"icon") %></a>
+                    </div>
+            </div>
+        </div>
+      <div class="parallax-container">
+          <div class="parallax"><img src="http://ethnic-jewellery.com/wp-content/uploads/2016/03/the-impressive-new-york-luxury-penthouses-for-sale-design.jpg"></div>
 
+      </div>
+
+<!-- </body>
+ -->

@@ -48,7 +48,7 @@
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= room['title'] %></span>
-              <p id="roomcards"><a href="/rooms/<%=room.id%>">Check It Out</a></p>
+              <p id="roomcards">$<%=room['price']%></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><a href="/rooms/<%=room.id%>"><%= room['title'] %></a></span>
