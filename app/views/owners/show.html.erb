@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 
 
-=======
+
+
 <nav class="nav">
     <% if current_owner %>
        Signed in as <%= current_owner.email %> |
@@ -15,14 +15,14 @@
 </nav>
 <br>
 <br>
->>>>>>> e6651ac98559cdb2221f587ebb92e6b735474b93
+
 
 <h3><%= @owner.name %></h3>
 <h4>Email: <%= @owner.email %></h4>
 <h4>Description: <%= @owner.description %></h4>
 <h4>Has pets?: <%= @owner.has_pets %></h4>
 <h4>Video: <%= @owner.video_url %></h4>
-<h5><a href="#">Add Room to Rent</a></h5>
+<h5><a href="/rooms/new">Add Room to Rent</a></h5>
 
 <br />
 <h5><%= link_to 'back', owners_path %></h5>

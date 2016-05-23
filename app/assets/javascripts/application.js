@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
+
+ ZiggeoApi.Events.on("submitted", function (data) {
+            alert("The video with token " + data.video.token + " has been submitted!");
+        });

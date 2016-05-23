@@ -1,4 +1,14 @@
+<link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
+<script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
+<script>ZiggeoApi.token = "32179eb318ced37fd8d6a1ea131407d4";</script>
+<br>
 <h1>Add a Room</h1>
+<br>
+<ziggeo ziggeo-limit=15
+        ziggeo-width=320
+        ziggeo-height=240>
+</ziggeo>
+<br>
 <%= form_for @room, url: {action: 'create'} do |f| %>
 
   <%= f.label :title %>
