@@ -7,17 +7,17 @@
             <div class="input-field">
                 <%= form_for @owner, url: {action: 'create'} do |f| %>
                     <%= f.label :name %>
-                    <%= f.text_field :name %>
+                    <%= f.text_field :name, :autofocus => 'autofocus', :value => '' %>
                     <br /><br />
             </div>
             <div class="input-field">
                     <%= f.label :email %>
-                    <%= f.text_field :email %>
+                    <%= f.text_field :email, :value => '' %>
                     <br /><br />
             </div>
             <div class="input-field">
                     <%= f.label :password %>
-                    <%= f.password_field :password %>
+                    <%= f.password_field :password, :value => '' %>
                     <br /><br />
             </div>
             <div class="input-field">
