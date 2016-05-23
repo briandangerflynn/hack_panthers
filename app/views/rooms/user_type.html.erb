@@ -12,7 +12,7 @@
 
 
 
-<div id="headerbar" class="headerbar">
+<div id="headerbar">
     <h2 class="center-align white-text"><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</h2>
     </div>
 <body class="frontpage">
@@ -27,7 +27,8 @@
                             <% if current_owner %>
                                 <a href="../owners/<%= current_owner['id'] %>"><%= image_tag("owner.svg", id:"icon") %></a>
                             <% else %>
-                                <a href="../owners/signup"><%= image_tag("owner.svg", id:"icon") %></a>
+                                <a href="/owners/signup"><%= image_tag("owner.svg", id:"icon") %></a>
+
                             <% end %>
                     </div>
                     <div class="col s4 center-align white-text">

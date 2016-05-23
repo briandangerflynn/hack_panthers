@@ -1,12 +1,21 @@
-<nav class="nav">
-    <% if current_owner %>
-       Signed in as <%= current_owner.email %> |
-       <%= link_to "Logout", '/ownerlogout', :class=>"navlink" %> |
-    <% else %>
-       <%= link_to 'Login', '/ownerlogin' %>
-       <%= link_to 'Signup', 'owners/signup', :class=>"navlink" %>
-    <% end %>
-     <a href="/" class="navlink">Home</a>
+
+<nav>
+  <div class="row" id="navbar">
+  <div class="nav-wrapper">
+        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_owner %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li><a href="/ownerss/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+        <% else %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
+          <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+        <% end %>
+      </ul>
+  </div>
+  </div>
 </nav>
 
 <div class="container">
