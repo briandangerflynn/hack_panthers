@@ -1,4 +1,37 @@
 <div class="container">
+  <button id="record">Record a Video of your Room</button>
+
+<div id='recorder'>
+</div>
+
+<script>
+  $("#record").on("click", function () {
+      console.log("button works")
+      $("#record").hide();
+      $("#recorder").show();
+      ZiggeoApi.Embed.embed('#recorder', {
+          width: 450,
+          height: 280,
+          limit: 120
+      });
+  });
+</script>
+
+<div id="reaction_wall">
+</div>
+
+<script>
+  ZiggeoApi.Events.on("submitted", function (data) {
+      var token = data.video.token
+      // var image_url = ZiggeoApi.Videos.image(token);
+      // $("#thumbnail").attr("src",image_url);
+      $("#video_token").val(token)
+      $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
+      $("#recorder").hide();
+      $("#record").show();
+  });
+</script>
+
   <%= form_for @renter, url: {action: 'update'} do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, value: @renter.name %>
@@ -9,6 +42,7 @@
     <%= f.label :has_pets %>
     <%= f.check_box :has_pets %>
       <br>
+      <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
 
 
     <%= f.submit %>
