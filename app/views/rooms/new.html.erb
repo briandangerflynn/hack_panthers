@@ -38,8 +38,8 @@
 <script>
   ZiggeoApi.Events.on("submitted", function (data) {
       var token = data.video.token
-      // var image_url = ZiggeoApi.Videos.image(token);
-      // $("#thumbnail").attr("src",image_url);
+      var image_url = ZiggeoApi.Videos.image(token);
+      $("#thumbnail").val(image_url);
       $("#video_token").val(token)
       $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
       $("#recorder").hide();
@@ -90,6 +90,7 @@
   <%= f.check_box :available %>
   <br>
 
+  <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '', :type => 'hidden' %>
   <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
   <br>
