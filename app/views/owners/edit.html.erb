@@ -1,4 +1,37 @@
 <div class="container">
+<button id="record">Record a Video to Introduce Yourself!</button>
+
+<div id='recorder'>
+</div>
+
+<script>
+  $("#record").on("click", function () {
+      console.log("button works")
+      $("#record").hide();
+      $("#recorder").show();
+      ZiggeoApi.Embed.embed('#recorder', {
+          width: 450,
+          height: 280,
+          limit: 120
+      });
+  });
+</script>
+
+<div id="reaction_wall">
+</div>
+
+<script>
+  ZiggeoApi.Events.on("submitted", function (data) {
+      var token = data.video.token
+      // var image_url = ZiggeoApi.Videos.image(token);
+      // $("#thumbnail").attr("src",image_url);
+      $("#video_token").val(token)
+      $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
+      $("#recorder").hide();
+      $("#record").show();
+  });
+</script>
+
 
 <%= form_for @owner, url: {action: 'update'} do |f| %>
   <%= f.label :name %>
@@ -9,10 +42,6 @@
   <%= f.text_field :email, value: @owner.email %>
   <br /><br />
 
-  <%= f.label :video_url %>
-  <%= f.text_field :video_url, value: @owner.video_url %>
-  <br /><br />
-
   <%= f.label :description %>
   <%= f.text_field :description, value: @owner.description %>
   <br /><br />
@@ -20,6 +49,8 @@
   <%= f.label :has_pets %>
   <%= f.text_field :has_pets, value: @owner.has_pets %>
   <br /><br />
+
+  <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
 
   <%= f.submit %>
 <% end %>

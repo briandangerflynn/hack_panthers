@@ -13,12 +13,13 @@
  *= require_tree .
  *= require_self
  */
-
+/*
 #landing {
  width: 100%;
  height: 100vh;
  color: white;
-  text-shadow: 1px 1px black;
+ text-shadow: 1px 1px black;
+ background-color: #03A9F4;
 }
 
 #landing-logo {
@@ -34,20 +35,39 @@
 
  .usertype {
   text-align: center;
+ } */
+ .homeo{
+  height: 40px;
+ }
+ .about{
+  border-width: 2px;
+  border-color: white;
  }
 
- .owner_icon {
-  width: 250px;
+#icon {
+  width: 150px;
+  margin-left: 35%;
  }
 
- .owner_icon:hover {
-  width: 255px;
+#icon:hover {
+  width: 160px;
  }
 
- .renter_icon {
-  width: 250px;
- }
+.frontpage{
+  background-color: #727272;
+}
+#midsection{
+  padding: 1%;
+}
+.parallax-container{
+  height: 325px;
+}
+#headerbar{
+  background-color: #727272;
+  padding: 0.25% 0% 0.25% 0%;
+}
 
-.renter_icon:hover {
-width: 255px;
-
+#abouttext{
+  font-size: 20px;
+  text-align: justify-all;
+}

@@ -1,4 +1,4 @@
-<div class="container">
+
 <nav class="nav">
     <% if current_renter %>
        Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
@@ -11,6 +11,8 @@
 
  </nav>
 
+
+<div class="container">
 <h2><%= @room.title %></h2><br>
 <hr>
 

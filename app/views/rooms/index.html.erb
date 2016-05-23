@@ -4,7 +4,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_renter %>
           <li><a href="/" class="navlink">Home</a></li>
-          <li>Signed in as <%= current_renter.email %></li>
+          <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
           <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
         <% else %>
           <li><a href="/" class="navlink">Home</a></li>
@@ -48,7 +48,7 @@
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= room['title'] %></span>
-              <p id="roomcards"><a href="/rooms/<%=room.id%>">Check It Out</a></p>
+              <p id="roomcards">$<%=room['price']%></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><a href="/rooms/<%=room.id%>"><%= room['title'] %></a></span>
