@@ -1,3 +1,4 @@
+/* LANDING PAGE  */
 #roomcards{
   font-size: 14px;
 }
@@ -43,11 +44,39 @@
   font-size: 20px;
   text-align: justify-all;
 }
+
+/* _________________________________ */
+/* ROOMS INDEX PAGE */
 .nav-wrapper{
   background-color: #727272;
 
 }
 #allapts{
   background-color: #B3E5FC;
-  padding: 0% 5% 0% 5%;
+  margin: 15% 5% 15% 5%;
+  padding: 0% 5% 5% 5%;
+  border-radius: 2%;
+}
+.formlabel{
+  font-size: 20px;
+}
+/* _________________________________ */
+/* ROOMS SHOW PAGE */
+.video-player-outer{
+margin-left: 7%;
+}
+.container{
+  margin-bottom: 20%;
+}
+.roomshowcontent{
+  margin-top: 10%;
+  background-color: #B3E5FC;
+  padding: 5%;
+}
+#roomshowcard{
+  height: 250px;
+  margin-top: 10%;
+}
+.card-content{
+margin: auto;
 }

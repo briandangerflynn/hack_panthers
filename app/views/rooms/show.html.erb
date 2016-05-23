@@ -1,48 +1,80 @@
 
-<nav class="nav">
-    <% if current_renter %>
-       Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
-       <%= link_to "Logout", '/renterlogout', :class=>"navlink" %>
-    <% else %>
-       <%= link_to 'Login', '/renterlogin' %>
-       <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
-    <% end %>
-     <a href="/" class="navlink">Home</a>
+<nav>
+  <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_renter %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
+          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+        <% else %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
+          <li><%= link_to 'Signup', 'renters/signup', :class=>"navlink" %></li>
+        <% end %>
+      </ul>
+  </div>
+</nav>
 
- </nav>
+<div class="row">
+<div class="container center-align">
+  <div class="roomshowcontent">
+  <h2><%= @room.title %></h2><br>
+
+      <ziggeo ziggeo-video=<%= @room.video_url %>
+              ziggeo-width=900
+              ziggeo-height=506>
+      </ziggeo>
+
+      <div class="row">
+        <div class="col s8">
+          <div class="card grey darken-1" id="roomshowcard">
+            <div class="card-content white-text">
+              <span class="card-title">$<%= @room.price %></span>
+              <p>Located in <%= @room.neighborhood %>, <%=@room.borough%>
+              <br>
+                <%= @room.address %>
+                <br>
+                <%= @room.description %>
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#">Interested!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s4">
+          <div class="card grey darken-1" id="roomshowcard">
+            <div class="card-content white-text">
+              <% if @room.pets_allowed == true %>
+                <p class="card-content">Pets allowed: Yes</p>
+              <% else %>
+                <p class="card-content">Pets allowed: No</p>
+              <% end %>
+              <% if @room.available == true %><br>
+                <p class="card-content">Room available: Yes</p>
+              <% else %>
+                <p class="card-content">Room available: No</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
 
-<div class="container">
-<h2><%= @room.title %></h2><br>
-<hr>
-
-<ziggeo ziggeo-video=<%= @room.video_url %>
-          ziggeo-width=320
-          ziggeo-height=240>
-</ziggeo>
 
 
 
-<p>
-  <%= @room.borough %><br>
-  <%= @room.neighborhood %><br>
-  <%= @room.address %><br>
-  <%= @room.description %><br>
-  $ <%= @room.price %><br>
-  <% if @room.pets_allowed == true %>
-  Pets allowed: Yes
-  <% else %>
-  Pets allowed: No
-  <% end %>
-  <% if @room.available == true %><br>
-  Room available: Yes
-  <% else %>
-  Room available: No
-  <% end %>
-</p>
 
-<%= link_to 'Back', '/rooms' %>
 
+
+
+
+      <%= link_to 'Back', '/rooms' %>
+</div>
 </div>
 
 
