@@ -22,7 +22,7 @@
 
   <%= form_for :renter, url: {action: "create"} do |f| %>
     <%= label(:renter, :name) %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :autofocus => "autofocus"  %>
       <br><br>
     <%= label(:renter, :email) %>
     <%= f.text_field :email %>

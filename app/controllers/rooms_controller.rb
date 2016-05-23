@@ -58,7 +58,8 @@ class RoomsController < ApplicationController
                     :title,
                     :neighborhood,
                     :borough,
-                    :available
+                    :available,
+                    :thumbnail_url
                     )
   end
 end
