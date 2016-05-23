@@ -36,3 +36,66 @@
  .usertype {
   text-align: center;
  } */
+
+
+
+#landing-background{
+  background-image: url('http://properlocations.com/wp-content/uploads/2011/04/hp_featured_NYC0203.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 50px;
+  text-shadow: 1px 1px black;
+  height: 99vh;
+}
+
+ .homeo{
+  height: 40px;
+ }
+
+
+
+ .about{
+  border-width: 2px;
+  border-color: white;
+ }
+
+#icon {
+  width: 150px;
+  margin-left: 35%;
+ }
+
+#icon:hover {
+  width: 152px;
+ }
+
+#midsection{
+  padding: 1%;
+  background-color: rgba(40, 40, 40, 0.5);
+}
+
+.pic-space{
+  height: 250px;
+}
+
+div#headerbar.headerbar{
+  background-color: rgba(40, 40, 40, 0.5);
+  padding: 0.25% 0% 0.25% 0%;
+}
+
+#abouttext{
+  font-size: 20px;
+  text-align: justify-all;
+}
+
+#lander-footer {
+  text-align: center;
+  background-color: black;
+  height: 50px;
+  color: white;
+}
+
+#lander-footer p {
+  margin-top: 0;
+  padding-top: 10px;
+}
+

@@ -8,19 +8,22 @@
         </div>
     </div>
 </div> -->
-<div id="headerbar">
+<div id="landing-background">
+
+
+
+<div id="headerbar" class="headerbar">
     <h2 class="center-align white-text"><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</h2>
     </div>
 <body class="frontpage">
-<div class="parallax-container">
-        <div class="parallax"><img src="http://properlocations.com/wp-content/uploads/2011/04/hp_featured_NYC0203.png"></div>
+<div class="pic-space">
     </div>
         <div class="frontpage" id="midsection">
             <div class="row">
                 <h4 class="center-align"><span class="white-text">Meet your future roommates.</span></h4>
-                    <br><br>
+
                     <div class="usertype col s4">
-                        <h5 class="center-align"><span class="white-text">Post Your Room</span></h5>
+                        <h5 class="center-align"><span class="white-text">Post A Room</span></h5>
                             <% if current_owner %>
                                 <a href="../owners/<%= current_owner['id'] %>"><%= image_tag("owner.svg", id:"icon") %></a>
                             <% else %>
@@ -38,10 +41,12 @@
                     </div>
             </div>
         </div>
-      <div class="parallax-container">
-          <div class="parallax"><img src="http://ethnic-jewellery.com/wp-content/uploads/2016/03/the-impressive-new-york-luxury-penthouses-for-sale-design.jpg"></div>
 
-      </div>
 
+
+</div>
+<footer id="lander-footer">
+    <p>&copy; 2016 &thinsp;&mdash;&thinsp; Hack Panthers</p>
+</footer>
 <!-- </body>
  -->
