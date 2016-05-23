@@ -15,21 +15,30 @@
 
     <br><br>
   <h3><%= @owner.name %></h3>
-  <h4>Email: <%= @owner.email %></h4>
+  <p>Email: <%= @owner.email %></p>
   <ziggeo ziggeo-video=<%= @owner.video_url %>
           ziggeo-width=320
           ziggeo-height=240>
 </ziggeo>
-  <h4>Description: <%= @owner.description %></h4>
-  <h4>Has pets?: <%= @owner.has_pets %></h4>
-<% if current_owner && current_owner.email == @owner.email %>
-  <h5><%= link_to 'Add New Room to Rent', new_room_path %></h5>
-<% end %>
-  <br />
-  <h5><%= link_to 'back', owners_path %></h5>
+  <h5>A little bit about <%= @owner.name %>:</h5>
+  <p><%= @owner.description %></p>
+  <% if @owner.has_pets == true %>
+  <p><%= @owner.name %> has pets.</p>
+  <% else %>
+  <p><%= @owner.name %> does not have pets.</p>
+  <% end %>
+  <p><%= @owner.name %> has the following rooms available:</p>
+  <% @rooms.each do |room| %>
+    <p><a href="/rooms/<%= room.id %>"><%= room.title %></a><p>
+  <% end %>
 
 <% if current_owner && current_owner.email == @owner.email %>
-  <h5><%= link_to 'edit', edit_owner_path(@owner) %></h5>
+
+  <h5><%= link_to 'Add New Room to Rent', new_room_path %></h5>
+<% end %>
+
+<% if current_owner && current_owner.email == @owner.email %>
+  <h5><%= link_to 'Edit Profile', edit_owner_path(@owner) %></h5>
 
   <h5><%= link_to 'delete', @owner, method: :delete %></h5>
 <% end %>
