@@ -25,4 +25,13 @@ ZiggeoApi.Videos.index({}, {
         });
 
 
+// ZiggeoApi.Videos.image( {
+//   success: function (args, result) {
+//     // Success
+//   },
+//   failure: function (args, error) {
+//     // Failure
+//   }
+// });
+
 
