@@ -56,8 +56,8 @@
 <script>
   ZiggeoApi.Events.on("submitted", function (data) {
       var token = data.video.token
-      var image_url = ZiggeoApi.Videos.image(token);
-
+      var thumbnail_url = ZiggeoApi.Videos.image(token);
+      $("#thumbnail").val(thumbnail_url)
       $("#video_token").val(token)
       $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
       $("#recorder").hide();
@@ -65,18 +65,7 @@
   });
 </script>
 
-
-
-
-
-
-
-
-
 <%= form_for @room, url: {action: 'create'} do |f| %>
-
-
-
   <%= f.label :title %>
   <br>
   <%= f.text_field :title %>
@@ -108,7 +97,7 @@
   <%= f.check_box :available %>
   <br>
 
-  <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '', :type => 'hidden' %>
+  <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '' %>
   <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
   <br>
