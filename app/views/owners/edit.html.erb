@@ -6,7 +6,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_owner %>
           <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/ownerss/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+          <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
           <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
         <% else %>
           <li><a href="/" class="navlink">Home</a></li>
@@ -25,7 +25,7 @@
   <h2>Update Your Profile</h2>
 
   <p>Let renters get to know you. Add a video to your profile introducing yourself.</p>
-  <% if @owner.video_url == "" %>
+  <% if @owner.video_url == nil %>
   <button id="record">Record Profile Video</button>
   <% else %>
   <button id="record">Re-Record Profile Video</button>
@@ -37,7 +37,6 @@
   <script>
     $("#record").on("click", function () {
         console.log("button works")
-        $("#record").hide();
         $("#recorder").show();
         popup = ZiggeoApi.Embed.popup({
             width: 450,
@@ -65,7 +64,6 @@
         // $("#thumbnail").attr("src",image_url);
         $("#video_token").val(token)
         $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
-        $("#record").show().text('Re-Record');
     });
   </script>
 
@@ -89,7 +87,7 @@
     <%= f.text_field :has_pets, value: @owner.has_pets %>
     <br /><br />
 
-    <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
+    <%= f.text_field :video_url, :id=>'video_token', :value => @owner.video_url, :type => 'hidden' %>
 
     <%= f.submit %>
   <% end %>

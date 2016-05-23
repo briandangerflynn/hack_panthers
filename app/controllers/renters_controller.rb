@@ -15,7 +15,7 @@ class RentersController < ApplicationController
      renter = Renter.new(renter_params)
      if renter.save
        session[:renter_id] = renter.id
-       redirect_to '/renters'
+       redirect_to '/rooms'
      else
        redirect_to '/signup'
      end

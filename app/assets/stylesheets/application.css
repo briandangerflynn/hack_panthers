@@ -130,3 +130,17 @@ div#headerbar.headerbar{
 #owner-edit-page p {
   font-family: cardo;
 }
+
+#owner-profile-page p {
+  font-family: cardo;
+}
+
+#owner-profile-page li {
+  list-style: disc;
+}
+
+p#owner-profile-name  {
+  margin-left: 8.33%;
+  font-size: 3em;
+  font-family: montserrat, sans-serif;
+}

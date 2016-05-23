@@ -48,8 +48,9 @@
 /* _________________________________ */
 /* ROOMS INDEX PAGE */
 .nav-wrapper{
-  background-color: #727272;
+  background-color: rgb(40, 40, 40)
 }
+
 #allapts{
   background-color: #B3E5FC;
   margin: 15% 5% 15% 5%;
