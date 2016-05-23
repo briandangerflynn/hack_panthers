@@ -56,7 +56,7 @@
 <script>
   ZiggeoApi.Events.on("submitted", function (data) {
       var token = data.video.token
-      // var image_url = ZiggeoApi.Videos.image(token);
+      var image_url = ZiggeoApi.Videos.image(token);
       // $("#thumbnail").attr("src",image_url);
       $("#video_token").val(token)
       $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
