@@ -1,36 +1,64 @@
 
+<nav>
+  <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_renter %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li>Signed in as <%= current_renter.email %></li>
+          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+        <% else %>
+          <li><a href="/" class="navlink">Home</a></li>
+          <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
+          <li><%= link_to 'Signup', 'renters/signup', :class=>"navlink" %></li>
+        <% end %>
+      </ul>
+  </div>
+</nav>
 
-<nav class="nav">
-    <% if current_renter %>
-       Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
-       <%= link_to "Logout", '/renterlogout', :class=>"navlink" %>
-    <% else %>
-       <%= link_to 'Login', '/renterlogin' %>
-       <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
+
+<div class="container">
+  <div class="row">
+    <h2 class="center-align"> Find Your New Home </h2>
+      <br><br>
+        <div class="input-field col s6 offset-s3">
+          <form class="center-align" method="get">
+            <br><br>
+              <select id="borough" name="borough" multiple>
+                <option value="All">All</option>
+                <option value="manhattan">Manhattan</option>
+                <option value="brooklyn">Brooklyn</option>
+                <option value="queens">Queens</option>
+                <option value="statenisland">Staten Island</option>
+                <option value="thebronx">The Bronx</option>
+              </select>
+            <label for="borough">Choose a Borough</label>
+          </form>
+      </div>
+    </div>
+
+<div class="row">
+    <br><br><br><br>
+  <h3 class="center-align">Available Rooms</h3>
+  <br><br>
+    <% @rooms.each do |room| %>
+      <div class="col s4">
+        <div class="card small">
+          <div class="card-image">
+            <img class="activator" src="http://st.hzcdn.com/simgs/530192e40fd76a2c_4-8816/modern-bedroom.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= room['title'] %></span>
+              <p id="roomcards"><a href="/rooms/<%=room.id%>">Check It Out</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><a href="/rooms/<%=room.id%>"><%= room['title'] %></a></span>
+              <p id="roomcards">$<%= room['price'] %> per month</p>
+              <p id="roomcards"><%= room['borough'] %></p>
+              <p id="roomcards"><%= room['description'] %></p>
+              <i class="card-title activator" id="closelink">close</i>
+          </div>
+        </div>
+      </div>
     <% end %>
-     <a href="/" class="navlink">Home</a>
-
- </nav>
-
- <h1> Find Your Neighborhood! </h1>
-
-<form class="form" method="get">
-  <label for="borough">Choose a Borough</label>
-      <select name="borough">
-        <option value="Manhattan">Manhattan</option>
-        <option value="Brooklyn">Brooklyn</option>
-        <option value="Queens">Queens</option>
-        <option value="StatenIsland">Staten Island</option>
-        <option value="Bronx">The Bronx</option>
-      </select>
-</form>
-
-
-<h1>Available Rooms</h1>
-  <% @rooms.each do |room| %>
-  <h3> <a href='/rooms/<%= room['id'] %>'><%= room.title %></a></h3>
-  <p><%= room.borough %>
-  <p><%= room.description %></p>
-<% end %>
-
-
+  </div>
+</div>

@@ -12,6 +12,8 @@
  </nav>
 
 
+<div class="container">
+
 <br>
 <h2><%= @renter.name.capitalize %></h2>
 <br>
@@ -33,3 +35,4 @@
 <%= link_to 'edit', edit_renter_path(@renter) %>
 <%= link_to 'delete', @renter, method: :delete %>
 
+</div>

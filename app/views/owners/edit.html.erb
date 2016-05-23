@@ -1,3 +1,5 @@
+<div class="container">
+
 <%= form_for @owner, url: {action: 'update'} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, value: @owner.name %>
@@ -22,3 +24,4 @@
   <%= f.submit %>
 <% end %>
 <%= link_to 'cancel', @owner %>
+</div>
