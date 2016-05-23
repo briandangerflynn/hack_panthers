@@ -1,5 +1,3 @@
-
-
 <nav class="nav">
     <% if current_renter %>
        Signed in as <a href="/renters/<%= current_renter.id %>"><%= current_renter.email %></a>
@@ -9,7 +7,6 @@
        <%= link_to 'Signup', 'renters/signup', :class=>"navlink" %>
     <% end %>
      <a href="/" class="navlink">Home</a>
-
  </nav>
 
 <div class="container">
@@ -34,7 +31,9 @@
 
 
 <br><br>
-<%= link_to 'edit', edit_renter_path(@renter) %>
-<%= link_to 'delete', @renter, method: :delete %>
+<% if current_renter && current_renter.email == @renter.email %>
 
+  <%= link_to 'edit', edit_renter_path(@renter) %>
+  <%= link_to 'delete', @renter, method: :delete %>
+<% end %>
 </div>
