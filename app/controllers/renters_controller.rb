@@ -5,6 +5,8 @@ class RentersController < ApplicationController
 
   def show
     @renter = Renter.find(params[:id])
+    @rooms = @renter['room_ids'].split("|")
+
   end
 
   def new
