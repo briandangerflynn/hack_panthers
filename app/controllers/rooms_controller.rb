@@ -13,6 +13,8 @@ class RoomsController < ApplicationController
   def show
     id = params[:id]
     @room = Room.find_by_id(id)
+    renter_ids = @room['renter_ids'].split("|").drop(1)
+    @renter_ids = renter_ids
   end
 
   def new
@@ -35,8 +37,19 @@ class RoomsController < ApplicationController
 
   def update
     id = params[:id]
-    @room = Room.find_by_id(id)
-    @room.update_attributes(room_params)
+    @room = Room.find_by_id(params[:id])
+
+    user_id = session[:renter_id]
+    user = Renter.find_by_id(user_id)
+    room_id = params['room']['room_id']
+    room_string = "#{user['room_ids']}|#{room_id}"
+    user.update(room_ids: room_string)
+
+
+    room_likes = @room.renter_ids
+    room_likes += "|#{user_id}"
+    @room.update(renter_ids: room_likes)
+
 
     redirect_to "/rooms/#{id}"
     # redirect_to(:back)
@@ -53,6 +66,7 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
     params.require(:room).permit(
                     :address,
