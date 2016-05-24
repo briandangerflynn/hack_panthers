@@ -1,3 +1,7 @@
+<% if current_owner == nil %>
+<% redirect_to '/owners/signup' %>
+<% end %>
+
 <nav>
   <div class="row" id="navbar">
     <div class="nav-wrapper">
