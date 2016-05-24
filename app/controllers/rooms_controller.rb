@@ -7,22 +7,8 @@ class RoomsController < ApplicationController
   def show
     id = params[:id]
     @room = Room.find_by_id(id)
-    @renter = Renter.find_by_id(current_renter.id)
-
-
-      #   if @room['renter_ids'] = !nil
-      #     id_array = @room['renter_ids'].split("|")
-      #   else
-      #     id_array = []
-      #   end
-
-      #     rentersarray = id_array.push(current_renter.id)
-      #     if rentersarray.length > 1
-      #       @rentersstring = rentersarray.join("|")
-      #     else
-      #       @rentersstring = rentersarray.to_s
-      #     end
-
+    renter_ids = @room['renter_ids'].split("|").drop(1)
+    @renter_ids = renter_ids
   end
 
   def new

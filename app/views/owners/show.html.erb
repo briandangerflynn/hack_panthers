@@ -44,6 +44,7 @@
   <h5><%= link_to 'Add New Room to Rent', new_room_path %></h5>
 <% end %>
 
+
 <% if current_owner && current_owner.email == @owner.email %>
   <h5><%= link_to 'Edit Profile', edit_owner_path(@owner) %></h5>
 
