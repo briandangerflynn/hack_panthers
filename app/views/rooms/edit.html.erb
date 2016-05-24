@@ -43,16 +43,11 @@
   <br>
   <%= f.text_field :price, value: @room.price %>
   <br>
-  <% if @room.pets_allowed == true %>
-  <% p = 'yes' %>
-  <% else %>
-  <% p = 'no' %>
-  <% end %>
+  <%= f.check_box :pets_allowed, {}, "true", "false" %>
   <%= f.label :pets_allowed %>
-  <%= f.text_field :pets_allowed, value: @room.pets_allowed, placeholder: p %>
   <br>
+  <%= f.check_box :available, {}, "true", "false" %>
   <%= f.label :available %>
-  <%= f.text_field :available, value: @room.available %>
   <br>
 
   <%= f.label :video_url %>

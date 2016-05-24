@@ -36,7 +36,7 @@
   <% end %>
   <p><%= @owner.name %> has the following rooms available:</p>
   <% @rooms.each do |room| %>
-    <p><a href="/rooms/<%= room.id %>"><%= room.title %></a><p>
+    <p><a href="/rooms/<%= room.id %>/edit"><%= room.title %></a><p>
   <% end %>
 
 <% if current_owner && current_owner.email == @owner.email %>

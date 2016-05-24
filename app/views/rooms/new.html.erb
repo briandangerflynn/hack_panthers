@@ -130,11 +130,11 @@
   <br>
   <%= f.text_field :price %>
   <br>
+  <%= f.check_box :pets_allowed, {}, "true", "false" %>
   <%= f.label :pets_allowed %>
-  <%= f.check_box :pets_allowed %>
   <br>
+  <%= f.check_box :available, {}, "true", "false" %>
   <%= f.label :available %>
-  <%= f.check_box :available %>
   <br>
 
   <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '', :type => 'hidden' %>
