@@ -17,6 +17,9 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+    if current_owner == nil
+      redirect_to '/owners/signup'
+    end
   end
 
   def create
@@ -40,7 +43,6 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    # id = params[:id]
     @room = Room.find_by(id: params[:id])
     @room.destroy
 

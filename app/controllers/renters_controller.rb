@@ -15,15 +15,11 @@ class RentersController < ApplicationController
      renter = Renter.new(renter_params)
      if renter.save
        session[:renter_id] = renter.id
-       redirect_to '/renters'
+       redirect_to '/rooms'
      else
        redirect_to '/signup'
      end
   end
-  # def create
-  #   @renter = Renter.create(renter_params)
-  #   redirect_to @renter
-  # end
 
   def edit
     @renter = Renter.find(params[:id])
@@ -44,7 +40,7 @@ class RentersController < ApplicationController
 
   private
   def renter_params
-    params.require(:renter).permit(:name, :email, :password, :description, :has_pet)
+    params.require(:renter).permit(:name, :email, :password, :description, :has_pet, :video_url)
   end
 
 

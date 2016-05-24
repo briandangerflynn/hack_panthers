@@ -1,48 +1,74 @@
-
 <nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_renter %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/renters/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
+    <div class="nav-wrapper">
+      <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_renter %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/renter/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/renter/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 </nav>
 
 <div class="container">
-<br>
-<h2><%= @renter.name.capitalize %></h2>
-<br>
-<h4><%= @renter.created_at.strftime("Member Since %B %d, %Y") %></h4>
-<ziggeo ziggeo-video=<%= @renter.video_url %>
-          ziggeo-width=320
-          ziggeo-height=240>
-</ziggeo>
-<br>
-<h4><%= @renter.description %></h4>
-  <br>
-  <% if @renter.has_pets == true %>
-    <%= "I've got a pet!" %>
-  <% else %>
-    <%= "No pets here!"%>
-  <br><br>
-  <%= link_to 'back', rooms_path %>
-  <% end %>
 
 
-<br><br>
-<% if current_renter && current_renter.email == @renter.email %>
+ <div class="profile-page">
+    <div class="section">
+        <p class="profile-name"><%= @renter.name %></p>
+    </div>
 
-  <%= link_to 'edit', edit_renter_path(@renter) %>
-  <%= link_to 'delete', @renter, method: :delete %>
-<% end %>
+    <div class="row profile-main">
+      <div class="col s4 offset-s1 profile-video">
+        <% if @renter.video_url == nil %>
+          <p>No profile video created. Edit your account to add one!</p>
+        <% else %>
+        <ziggeo ziggeo-video=<%= @renter.video_url %>
+                ziggeo-width=320
+                ziggeo-height=240>
+        </ziggeo>
+        <% end %>
+      </div>
+
+      <div class="col s5 offset-s1 profile-info">
+        <p><b>Email:</b> <%= @renter.email %></p>
+        <% if @renter.description == nil %>
+          <p><b>About <%= @renter.name %>:</b> No description created. Edit your profile to add one!</p>
+        <% else %>
+          <p><b>About <%= @renter.name %>:</b> <%= @renter.description %></p>
+        <% end %>
+
+        <% if @renter.has_pets == true %>
+          <p><b>Pets:</b> Yes</p>
+        <% else %>
+          <p><b>Pets:</b> No</p>
+        <% end %>
+
+
+        <% if current_renter && current_renter.email == @renter.email %>
+
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+
+        <% if current_renter && current_renter.email == @renter.email %>
+          <button><%= link_to 'Edit Profile', edit_renter_path(@renter) %></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+          <button><%= link_to 'Delete Account', @renter, method: :delete %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

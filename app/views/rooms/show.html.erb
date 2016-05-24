@@ -1,20 +1,23 @@
-
 <nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_renter %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/renters/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
+    <div class="nav-wrapper">
+      <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_owner %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><%= link_to "Logout", '/ownerlogout', :class=>"navlink" %></li>
+          <% elsif current_renter %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/renter/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/renters/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 </nav>
 
@@ -66,18 +69,23 @@
     </div>
   </div>
   </div>
+      <div class="row">
+      <div class="col s10 offset-s1">
 
-
-
-
-
-
-
-
-
-
-      <%= link_to 'Back', '/rooms' %>
+        <% if current_owner && current_owner.id == @room.user_id %>
+          <button><%= link_to 'Edit Room', edit_room_path(@room) %></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+          <button><%= link_to 'Delete Account', @room, method: :delete %></button>
+        <% end %>
+      </div>
+    </div>
 </div>
 </div>
+
+
+
 
 

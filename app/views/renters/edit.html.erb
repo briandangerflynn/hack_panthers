@@ -1,71 +1,93 @@
-
 <nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_renter %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/renters/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
+    <div class="nav-wrapper">
+      <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_owner %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 </nav>
+
 <div class="container">
-  <button id="record">Record a Video to Introduce Yourself!</button>
+  <div class="edit-page">
 
-<div id='recorder'>
-</div>
 
-<script>
-  $("#record").on("click", function () {
-      console.log("button works")
-      $("#record").hide();
-      $("#recorder").show();
-      ZiggeoApi.Embed.embed('#recorder', {
-          width: 450,
-          height: 280,
-          limit: 120
-      });
-  });
-</script>
+  <h3>Update Your Profile</h3>
 
-<div id="reaction_wall">
-</div>
+  <p>Let future roommates get to know you! Add a video to your profile introducing yourself.</p>
+  <% if @renter.video_url == nil %>
+  <button id="record">Record Profile Video</button>
+  <% else %>
+  <button id="record">Re-Record Profile Video</button>
+  <% end %>
 
-<script>
-  ZiggeoApi.Events.on("submitted", function (data) {
-      var token = data.video.token
-      // var image_url = ZiggeoApi.Videos.image(token);
-      // $("#thumbnail").attr("src",image_url);
-      $("#video_token").val(token)
-      $("#reaction_wall").append("<ziggeo id='reaction' ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + data.video.token + "'></ziggeo>");
-      $("#recorder").hide();
-      $("#record").show();
-  });
-</script>
+  <br><br>
+
+
+  <script>
+    $("#record").on("click", function () {
+        console.log("button works")
+        popup = ZiggeoApi.Embed.popup({
+            width: 450,
+            height: 280,
+            limit: 120
+        });
+    });
+  </script>
+
+  <p>Current profile video:</p>
+  <div id="recorded-vid">
+    <ziggeo ziggeo-video=<%= @renter.video_url %>
+              ziggeo-width=320
+              ziggeo-height=240>
+    </ziggeo>
+  </div>
+
+  <script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+        var token = data.video.token
+        $('#recorded-vid').html("")
+        popup.hidePopup();
+        $("#video_token").val(token)
+        $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
+    });
+  </script>
+
+  <br>
 
   <%= form_for @renter, url: {action: 'update'} do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, value: @renter.name %>
-      <br><br>
-    <%= f.label :description %>
-    <%= f.text_field :description, value: @renter.description %>
-      <br><br>
-    <%= f.label :has_pets %>
-    <%= f.check_box :has_pets %>
-      <br>
-      <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
+    <br /><br />
 
+    <%= f.label :email %>
+    <%= f.text_field :email, value: @renter.email %>
+    <br /><br />
+
+    <%= f.label :description %>
+    <small>&thinsp;&mdash;&thinsp;tell us about yourself!</small>
+    <%= f.text_field :description, value: @renter.description %>
+    <br /><br />
+
+    <%= f.label :has_pets %>
+    <%= f.text_field :has_pets, value: @renter.has_pets %>
+    <br /><br />
+
+    <%= f.text_field :video_url, :id=>'video_token', :value => @renter.video_url, :type => 'hidden' %>
 
     <%= f.submit %>
   <% end %>
-  <%= link_to 'cancel', "/renter/@renter['id']" %>
-
+  <br>
+  <%= link_to 'cancel', @renter %>
+  </div>
 </div>
+

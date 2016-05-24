@@ -13,31 +13,19 @@
  *= require_tree .
  *= require_self
  */
-/*
-#landing {
- width: 100%;
- height: 100vh;
- color: white;
- text-shadow: 1px 1px black;
- background-color: #03A9F4;
+
+body {
+  height: 100vh;
 }
 
-#landing-logo {
-  padding-top: 60px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat, sans-serif;
+}
+
+#arrow {
   font-weight: bold;
-  font-family: montserrat;
-  text-shadow: 1px 1px black;
+  font-size: 32px;
 }
-
-#landing-tagline {
-  padding-bottom: 50px;
-}
-
- .usertype {
-  text-align: center;
- } */
-
-
 
 #landing-background{
   background-image: url('http://properlocations.com/wp-content/uploads/2011/04/hp_featured_NYC0203.png');
@@ -45,14 +33,13 @@
   background-repeat: no-repeat;
   padding-bottom: 50px;
   text-shadow: 1px 1px black;
-  height: 99vh;
+  height: 95vh;
 }
 
  .homeo{
   height: 40px;
+  margin-left: 25px;
  }
-
-
 
  .about{
   border-width: 2px;
@@ -65,7 +52,7 @@
  }
 
 #icon:hover {
-  width: 152px;
+  width: 155px;
  }
 
 #midsection{
@@ -77,13 +64,15 @@
   height: 30vh;
 }
 
-div#headerbar.headerbar{
+div#headerbar {
   background-color: rgba(40, 40, 40, 0.6);
-  padding: 0.25% 0% 0.25% 0%;
+  padding: 0.50% 0% 0.50% 0%;
+  text-align: center;
 }
 
 .about-headers {
   margin-bottom: 0;
+  font-size: 18px;
 }
 
 .abouttext{
@@ -93,14 +82,14 @@ div#headerbar.headerbar{
   font-family: cardo;
 }
 
-#lander-footer {
+#footer {
   text-align: center;
   background-color: rgb(40, 40, 40);
-  height: 50px;
+  height: 5vh;
   color: white;
 }
 
-#lander-footer p {
+#footer p {
   margin-top: 0;
   padding-top: 10px;
 }
@@ -127,6 +116,48 @@ div#headerbar.headerbar{
   background-color: lightpink;
 }
 
-#owner-edit-page p {
+.edit-page p {
   font-family: cardo;
+}
+
+.profile-page p {
+  font-family: cardo;
+}
+
+.profile-page li {
+  list-style: disc;
+}
+
+p.profile-name  {
+  margin-left: 8.33%;
+  font-size: 3em;
+  font-family: montserrat, sans-serif;
+}
+
+h2 {
+  display: inline;
+}
+
+#lander-main-copy {
+  display: block;
+  text-align-last: center;
+  font-size: 2em;
+  padding-bottom: 0;
+}
+
+#nav-mobile a {
+  margin-right: 25px;
+  display: inline-block;
+}
+
+.landing-icon-text:hover {
+  /* font-weight: bold; */
+}
+
+#available-rooms-title {
+  padding-top: 50px;
+}
+
+#rooms-index-title {
+  padding-top: 30px;
 }
