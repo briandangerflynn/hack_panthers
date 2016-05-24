@@ -1,7 +1,13 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = Room.all
+    if filter = params[:filter]
+      # Explore named scopes @rooms = Room.by_borough(filter =
+      @rooms = Room.where('borough IN (?)', filter)
+      render json: @rooms
+    else
+      @rooms = Room.all
+    end
   end
 
   def show
@@ -63,4 +69,5 @@ class RoomsController < ApplicationController
                     )
   end
 end
+
 
