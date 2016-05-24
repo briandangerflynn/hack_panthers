@@ -54,6 +54,7 @@
       </div>
     </div>
 
+<% if current_renter && current_renter.email == @renter.email %>
     <div class="row" id="allapts">
     <br><br><br><br>
   <h3 class="center-align">Rooms You've Liked</h3>
@@ -85,7 +86,6 @@
   <div class="row">
       <div class="col s10 offset-s1">
 
-        <% if current_renter && current_renter.email == @renter.email %>
           <button><%= link_to 'Edit Profile', edit_renter_path(@renter) %></button>
       </div>
     </div>

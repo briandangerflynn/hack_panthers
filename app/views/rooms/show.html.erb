@@ -85,7 +85,7 @@
   <h3 class="center-align">People Who Are Interested In This Room</h3>
   <br><br>
 
-  <% if @renter_ids == nil %>
+  <% if @renter_ids == "" %>
     <%"No one is interested yet"%>
   <% else %>
     <% @renter_ids.each do |id| %>
@@ -99,7 +99,7 @@
               <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= renter['name'] %></span>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4"><a href="/rooms/<%=renter%>"><%= renter['name'] %></a></span>
+              <span class="card-title grey-text text-darken-4"><a href="/renters/<%=renter['id']%>"><%= renter['name'] %></a></span>
                 <p id="roomcards"><%= renter['description'] %></p>
                 <i class="card-title activator" id="closelink">close</i>
             </div>
