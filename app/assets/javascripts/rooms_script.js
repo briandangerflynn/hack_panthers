@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  $('#borough').val("All")
   $('#borough').change(function(){
     if($(this).val() == "All"){
       console.log($(this).val())
