@@ -37,17 +37,15 @@
   <p><%= @owner.name %> has the following rooms available:</p>
   <% @rooms.each do |room| %>
     <p><a href="/rooms/<%= room.id %>"><%= room.title %></a><p>
+    <% if current_owner && current_owner.email == @owner.email %>
+    <p><a href="/rooms/<%= room.id %>/edit">Edit</a><p>
+  <% end %>
   <% end %>
 
 <% if current_owner && current_owner.email == @owner.email %>
   <h5><%= link_to 'Add New Room to Rent', new_room_path %></h5>
 <% end %>
 
-<% if current_owner && current_owner.email == @owner.email %>
-<% @rooms.each do |room| %>
-    <p><a href="/rooms/<%= room.id %>/edit">Edit <%= room.title %></a><p>
-  <% end %>
-  <% end %>
 
 <% if current_owner && current_owner.email == @owner.email %>
   <h5><%= link_to 'Edit Profile', edit_owner_path(@owner) %></h5>
