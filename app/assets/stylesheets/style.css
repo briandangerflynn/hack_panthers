@@ -1,17 +1,23 @@
 /* LANDING PAGE  */
-#roomcards{
+#roomcards {
   font-size: 14px;
 }
-#roomcardtitle{
+#roomcardtitle {
   font-size: 20px;
 }
 
-#closelink{
+#closelink {
   font-size: 15px;
 }
- .homeo{
+
+.homeo {
   height: 40px;
- }
+}
+
+#home-links {
+  padding-top: 10px;
+}
+
  .about{
   border-width: 2px;
   border-color: white;
@@ -48,7 +54,11 @@
 /* _________________________________ */
 /* ROOMS INDEX PAGE */
 .nav-wrapper{
-  background-color: rgb(40, 40, 40)
+  background-color: rgb(40, 40, 40);
+}
+
+.nav-wrapper a {
+  color: white;
 }
 
 #allapts{
@@ -85,9 +95,10 @@ margin-left: 7%;
 margin: auto;
 }
 #navlogo{
-  margin-top: 0%;
+  padding-top: 15px;
+  display: inline-block;
 }
 #navbar{
-  background-color: #727272;
-  height:100%;
+  background-color: rgb(40, 40, 40);
+  height: 70px;
 }

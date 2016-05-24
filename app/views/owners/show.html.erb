@@ -1,33 +1,33 @@
-
+<nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_owner %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
-  </div>
+    <div class="nav-wrapper">
 
+    <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_owner %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
 </nav>
 
 <div class="container">
-  <div id="owner-profile-page">
+  <div class="profile-page">
     <div class="section">
-        <p id="owner-profile-name"><%= @owner.name %></p>
+        <p class="profile-name"><%= @owner.name %></p>
     </div>
 
 
 
-    <div class="row" id="owner-profile-main">
-      <div id="owner-profile-video" class="col s4 offset-s1">
+    <div class="row profile-main">
+      <div class="col s4 offset-s1 profile-video">
         <% if @owner.video_url == nil %>
           <p>No profile video created. Edit your account to add one!</p>
         <% else %>
@@ -38,12 +38,12 @@
         <% end %>
       </div>
 
-      <div id="owner-profile-info" class="col s5 offset-s1">
+      <div class="col s5 offset-s1 profile-info">
         <p><b>Email:</b> <%= @owner.email %></p>
         <% if @owner.description == nil %>
           <p><b>About <%= @owner.name %>:</b> No description created. Edit your profile to add one!</p>
         <% else %>
-          <p>About <%= @owner.name %>: <%= @owner.description %></p>
+          <p><b>About <%= @owner.name %>:</b> <%= @owner.description %></p>
         <% end %>
 
         <% if @owner.has_pets == true %>
