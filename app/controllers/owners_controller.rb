@@ -18,9 +18,9 @@ class OwnersController < ApplicationController
      @owner = Owner.new(owner_params)
      if @owner.save
        session[:owner_id] = @owner.id
-       redirect_to '/owners'
+       redirect_to @owner
      else
-       redirect_to '/signup'
+       redirect_to 'owners/signup'
      end
    end
 
@@ -38,7 +38,7 @@ class OwnersController < ApplicationController
     @owner = Owner.find_by(id: params[:id])
     session.clear
     @owner.destroy
-    redirect_to owners_path
+    redirect_to '/owners/signup'
   end
 
   private

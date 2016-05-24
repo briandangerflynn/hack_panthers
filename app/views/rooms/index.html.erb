@@ -44,6 +44,7 @@
   <h3 class="center-align">Available Rooms</h3>
   <br><br>
     <% @rooms.each do |room| %>
+    <% if room.available == true %>
       <div class="col s4">
         <div class="card small">
           <div class="card-image">
@@ -62,5 +63,6 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
   </div>
