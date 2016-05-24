@@ -106,6 +106,7 @@
   <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
   <br>
+  <%= f.text_field :renter_ids, :value=>""%>
 
  <%= f.submit "Update Room" %>
 <% end %>

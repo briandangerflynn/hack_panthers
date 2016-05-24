@@ -4,7 +4,8 @@ class RentersController < ApplicationController
   end
 
   def show
-    @renter = Renter.find_by(id: params[:id])
+    @renter = Renter.find(params[:id])
+    @room_ids = @renter['room_ids'].split("|")
   end
 
   def new
@@ -40,8 +41,6 @@ class RentersController < ApplicationController
 
   private
   def renter_params
-    params.require(:renter).permit(:name, :email, :password, :description, :has_pet, :video_url)
+    params.require(:renter).permit(:room_ids, :name, :email, :password, :description, :has_pet, :video_url)
   end
-
-
 end

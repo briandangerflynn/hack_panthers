@@ -76,8 +76,12 @@
 }
 /* _________________________________ */
 /* ROOMS SHOW PAGE */
-.video-player-outer{
-margin-left: 7%;
+/* .video-player-outer{
+padding-left: 30%;
+} */
+.video-player-content{
+  margin-left: 10%;
+
 }
 .container{
   margin-bottom: 20%;
@@ -86,6 +90,12 @@ margin-left: 7%;
   margin-top: 10%;
   background-color: #B3E5FC;
   padding: 5%;
+}
+
+#leftcard, #rightcard {
+    min-height: 200px;
+    padding-bottom: 20px;
+    height: auto;
 }
 #roomshowcard{
   height: 250px;
