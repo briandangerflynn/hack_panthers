@@ -78,27 +78,21 @@
 
 
   <%= f.label :title, :autofocus => "autofocus"  %>
-  <br>
   <%= f.text_field :title %>
   <br>
   <%= f.label :address %>
-  <br>
   <%= f.text_field :address %>
   <br>
   <%= f.label :borough %>
-  <br>
   <%= f.text_field :borough %>
   <br>
   <%= f.label :neighborhood %>
-  <br>
   <%= f.text_field :neighborhood  %>
   <br>
   <%= f.label :description %>
-  <br>
   <%= f.text_field :description %>
   <br>
   <%= f.label :price %>
-  <br>
   <%= f.text_field :price %>
   <br>
   <%= f.label :pets_allowed %>
@@ -107,11 +101,16 @@
   <%= f.label :available %>
   <%= f.check_box :available %>
   <br>
+  <%= f.text_field :renter_ids, :value=>"", :type=>'hidden'%>
+
 
   <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '', :type => 'hidden' %>
   <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
+
+
   <br>
+
 
  <%= f.submit "Add a Room" %>
 <% end %>

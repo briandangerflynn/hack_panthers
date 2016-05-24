@@ -22,33 +22,23 @@
 <div class="container center-align">
   <div class="roomshowcontent">
   <h2><%= @room.title %></h2><br>
-
+  <div class="center-align">
       <ziggeo ziggeo-video=<%= @room.video_url %>
               ziggeo-width=900
               ziggeo-height=506>
       </ziggeo>
+      </div>
 
-      <div class="row">
-        <div class="col s8">
-          <div class="card grey darken-1" id="roomshowcard">
-            <div class="card-content white-text">
-              <span class="card-title">$<%= @room.price %></span>
+      <div class="row" id="roomshowcards">
+        <div class="col s8" id="leftcard">
+            <div class="white-text grey">
+              <span class="title">$<%= @room.price %></span>
               <p>Located in <%= @room.neighborhood %>, <%=@room.borough%>
               <br>
                 <%= @room.address %>
                 <br>
                 <%= @room.description %>
               </p>
-            </div>
-            <div class="card-action">
-              <a href="#">Interested!</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s4">
-          <div class="card grey darken-1" id="roomshowcard">
-            <div class="card-content white-text">
               <% if @room.pets_allowed == true %>
                 <p class="card-content">Pets allowed: Yes</p>
               <% else %>
@@ -60,24 +50,17 @@
                 <p class="card-content">Room available: No</p>
               <% end %>
             </div>
+
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+          </div>
 
 
 
 
-
-
-
-
-
-
-      <%= link_to 'Back', '/rooms' %>
-</div>
-</div>
+         <%= form_for @room, url: {action: 'update'} do |f| %>
+           <%= f.text_field :renter_ids, :value=>@room['renter_ids'], :type =>'hidden'%><br><br>
+           <%= f.text_field :room_id, :value=>@room['id'], :type=>'hidden' %>
+           <%= f.submit "LIKE THIS ROOM" %>
+         <% end %>
 
 

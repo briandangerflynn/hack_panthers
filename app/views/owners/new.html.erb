@@ -25,17 +25,21 @@
             <%= form_for @owner, url: {action: 'create'} do |f| %>
             <div class="input-field">
                     <%= f.label :name %>
-                    <%= f.text_field :name, :autofocus => 'autofocus', :value => '' %>
+                    <%= f.text_field :name %>
                     <br /><br />
             </div>
             <div class="input-field">
                     <%= f.label :email %>
-                    <%= f.text_field :email, :value => '' %>
+                    <%= f.text_field :email %>
                     <br /><br />
             </div>
             <div class="input-field">
                     <%= f.label :password %>
-                    <%= f.password_field :password, :value => '' %>
+                    <%= f.password_field :password %>
+                    <br /><br />
+            </div>
+            <div class="input-field">
+                    <%= f.text_field :room_ids, :value => '' %>
                     <br /><br />
             </div>
             <div class="input-field">

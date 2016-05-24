@@ -18,18 +18,41 @@
   </div>
 </nav>
 <div class="container">
-<h1>Sign Up to Get Started</h1>
 
-  <%= form_for :renter, url: {action: "create"} do |f| %>
-    <%= label(:renter, :name) %>
-    <%= f.text_field :name, :autofocus => "autofocus"  %>
-      <br><br>
-    <%= label(:renter, :email) %>
-    <%= f.text_field :email %>
-      <br><br>
-    <%= label(:renter, :password) %>
-    <%= f.password_field :password %>
-      <br><br>
-    <%= f.submit "Add Renter" %>
-  <% end %>
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <h2 class="center-align">Sign Up to Get Started</h2>
+            <%= form_for @renter, url: {action: 'create'} do |f| %>
+            <div class="input-field">
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
+                    <br /><br />
+            </div>
+            <div class="input-field">
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+                    <br /><br />
+            </div>
+            <div class="input-field">
+                    <%= f.label :password %>
+                    <%= f.password_field :password %>
+                    <br /><br />
+            </div>
+            <div class="input-field">
+                    <%= f.text_field :room_ids, :value => '' %>
+                    <br /><br />
+            </div>
+            <div class="input-field">
+                    <%= f.submit "Sign Up", :class =>'signup'%>
+            </div>
+                    <% end %>
+            <p class="center-align"><%= link_to 'cancel', "/" %></p>
+                <br>
+
+
+            <p class="center-align">
+                <%= link_to 'Already have an account? Log in', "/ownerlogin" %></p>
+
+        </div>
+    </div>
 </div>
