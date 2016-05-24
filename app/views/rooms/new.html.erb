@@ -37,7 +37,7 @@
 <div id='recorder'>
 </div>
 
-<script>
+<!-- <script>
   $("#record").on("click", function () {
       console.log("button works")
       $("#record").hide();
@@ -63,15 +63,44 @@
       $("#recorder").hide();
       $("#record").show();
   });
-</script>
+</script> -->
 
+<script>
+    $("#record").on("click", function () {
+        console.log("button works")
+        $("#record").hide();
+        $("#recorder").show();
+        popup = ZiggeoApi.Embed.popup({
+            width: 450,
+            height: 280,
+            limit: 120
+        });
+    });
+  </script>
 
+  <p>Current profile video:</p>
+  <div id="recorded-vid">
+  <ziggeo ziggeo-video
+            ziggeo-width=320
+            ziggeo-height=240>
+  </ziggeo>
+  </div>
 
+  <script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+        var token = data.video.token
+        $('#recorded-vid').html("")
+        popup.hidePopup();
 
+        // var image_url = ZiggeoApi.Videos.image(token);
+        // $("#thumbnail").attr("src",image_url);
+        $("#video_token").val(token)
+        $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
+        $("#record").show().text('Re-Record');
+    });
+  </script>
 
-
-
-
+<br>
 
 <%= form_for @room, url: {action: 'create'} do |f| %>
 
