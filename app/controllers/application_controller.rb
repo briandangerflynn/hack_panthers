@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_owner
 
   def authorize_owner
-   redirect_to '/login' unless current_owner
+   redirect_to '/ownerlogin' unless current_owner
   end
 
   def current_renter
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_renter
 
   def authorize_renter
-    redirect_to '/login' unless current_renter
+    redirect_to '/renterlogin' unless current_renter
   end
 end
 

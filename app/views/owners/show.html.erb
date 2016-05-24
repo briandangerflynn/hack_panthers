@@ -1,57 +1,81 @@
-
+<nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_owner %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
-  </div>
+    <div class="nav-wrapper">
 
+    <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_owner %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
 </nav>
 
 <div class="container">
-
-    <br><br>
-  <h3><%= @owner.name %></h3>
-  <p>Email: <%= @owner.email %></p>
-  <ziggeo ziggeo-video=<%= @owner.video_url %>
-          ziggeo-width=320
-          ziggeo-height=240>
-</ziggeo>
-  <h5>A little bit about <%= @owner.name %>:</h5>
-  <p><%= @owner.description %></p>
-  <% if @owner.has_pets == true %>
-  <p><%= @owner.name %> has pets.</p>
-  <% else %>
-  <p><%= @owner.name %> does not have pets.</p>
-  <% end %>
-  <p><%= @owner.name %> has the following rooms available:</p>
-  <% @rooms.each do |room| %>
-    <p><a href="/rooms/<%= room.id %>"><%= room.title %></a><p>
-    <% if current_owner && current_owner.email == @owner.email %>
-    <p><a href="/rooms/<%= room.id %>/edit">Edit</a><p>
-  <% end %>
-  <% end %>
-
-<% if current_owner && current_owner.email == @owner.email %>
-  <h5><%= link_to 'Add New Room to Rent', new_room_path %></h5>
-<% end %>
+  <div class="profile-page">
+    <div class="section">
+        <p class="profile-name"><%= @owner.name %></p>
+    </div>
 
 
-<% if current_owner && current_owner.email == @owner.email %>
-  <h5><%= link_to 'Edit Profile', edit_owner_path(@owner) %></h5>
+    <div class="row profile-main">
+      <div class="col s4 offset-s1 profile-video">
+        <% if @owner.video_url == nil %>
+          <p>No profile video created. Edit your account to add one!</p>
+        <% else %>
+        <ziggeo ziggeo-video=<%= @owner.video_url %>
+                ziggeo-width=320
+                ziggeo-height=240>
+        </ziggeo>
+        <% end %>
+      </div>
 
-  <h5><%= link_to 'delete', @owner, method: :delete %></h5>
-<% end %>
+      <div class="col s5 offset-s1 profile-info">
+        <p><b>Email:</b> <%= @owner.email %></p>
+        <% if @owner.description == nil %>
+          <p><b>About <%= @owner.name %>:</b> No description created. Edit your profile to add one!</p>
+        <% else %>
+          <p><b>About <%= @owner.name %>:</b> <%= @owner.description %></p>
+        <% end %>
 
+        <% if @owner.has_pets == true %>
+          <p><b>Pets:</b> Yes</p>
+        <% else %>
+          <p><b>Pets:</b> No</p>
+        <% end %>
+
+        <p><b>Rooms available:</b></p>
+        <ul>
+          <% @rooms.each do |room| %>
+            <li><a href="/rooms/<%= room.id %>"><%= room.title %></a></li>
+          <% end %>
+        </ul>
+        <% if current_owner && current_owner.email == @owner.email %>
+
+          <button><%= link_to 'Add New Room to Rent', new_room_path %></button>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+
+        <% if current_owner && current_owner.email == @owner.email %>
+          <button><%= link_to 'Edit Profile', edit_owner_path(@owner) %></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+          <button><%= link_to 'Delete Account', @owner, method: :delete %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 

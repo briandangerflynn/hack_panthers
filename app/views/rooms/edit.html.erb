@@ -1,63 +1,116 @@
 <nav>
   <div class="row" id="navbar">
-  <div class="nav-wrapper">
-        <h2 class="col s2 white-text" id="navlogo"><a href='/'><%= image_tag("homeologo.svg", class:"homeo")%>   Homeo</a></h2>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_owner %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
-          <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
-        <% else %>
-          <li><a href="/" class="navlink">Home</a></li>
-          <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
-          <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
-        <% end %>
-      </ul>
-  </div>
+    <div class="nav-wrapper">
+      <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_owner %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
+          <% else %>
+            <li><a href="/" class="navlink">Home</a></li>
+            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 </nav>
+
 <div class="container">
+<h3>Update <%= @room.title %></h3>
+
+  <% if @room.video_url == nil %>
+    <p>Create a video showing off your apartment and your available room to renters.</p>
+    <button id="record">Record Rental Room Video</button>
+  <% else %>
+    <p>Update the video showing off your apartment and your available room to renters.</p>
+    <button id="record">Re-Record Rental Room Video</button>
+  <% end %>
+
+  <br><br>
+
+<script>
+  $("#record").on("click", function () {
+      console.log("button works")
+      popup = ZiggeoApi.Embed.popup({
+          width: 450,
+          height: 280,
+          limit: 120
+      });
+  });
+</script>
+
+<p>Current Rental Room Video:</p>
+  <div id="recorded-vid">
+  <ziggeo ziggeo-video=<%= @room.video_url %>
+            ziggeo-width=320
+            ziggeo-height=240>
+  </ziggeo>
+  </div>
+
+  <script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+        var token = data.video.token
+        $('#recorded-vid').html("")
+        popup.hidePopup();
+        var image_url = ZiggeoApi.Videos.image(token);
+        $("#thumbnail").attr("src",image_url);
+        $("#video_token").val(token)
+        $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
+    });
+  </script>
+
+  <br>
+
+
 <%= form_for @room, url: {action: 'update'} do |f| %>
 
-  <%= f.label :title %>
+
+
+  <%= f.label :title, :autofocus => "autofocus"  %>
   <br>
-  <%= f.text_field :title, value: @room.title %>
+  <%= f.text_field :title %>
   <br>
   <%= f.label :address %>
   <br>
-  <%= f.text_field :address, value: @room.address %>
+  <%= f.text_field :address %>
   <br>
   <%= f.label :borough %>
   <br>
-  <%= f.text_field :borough, value: @room.borough %>
+  <%= f.text_field :borough %>
   <br>
   <%= f.label :neighborhood %>
   <br>
-  <%= f.text_field :neighborhood, value: @room.neighborhood  %>
+  <%= f.text_field :neighborhood  %>
   <br>
   <%= f.label :description %>
   <br>
-  <%= f.text_field :description, value: @room.description %>
+  <%= f.text_field :description %>
   <br>
   <%= f.label :price %>
   <br>
-  <%= f.text_field :price, value: @room.price %>
+  <%= f.text_field :price %>
   <br>
+
   <%= f.check_box :pets_allowed, {}, "true", "false" %>
   <%= f.label :pets_allowed %>
+
   <br>
   <%= f.check_box :available, {}, "true", "false" %>
   <%= f.label :available %>
+
   <br>
 
-  <%= f.label :video_url %>
-  <%= f.text_field :video_url, value: @room.video_url %>
+  <%= f.text_field :thumbnail_url, :id=>'thumbnail', :value => '', :type => 'hidden' %>
+  <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
+  <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
   <br>
 
- <%= f.submit %>
- <br>
+ <%= f.submit "Update Room" %>
 <% end %>
-  <button> <%= link_to 'Cancel', '/rooms' %></button>
+
+<button> <%= link_to 'Cancel', '/rooms' %></button>
   <br><br>
 <%= link_to 'Delete', @room, method: :delete %>
 <br>

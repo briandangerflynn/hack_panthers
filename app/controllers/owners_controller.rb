@@ -16,6 +16,7 @@ class OwnersController < ApplicationController
 
   def create
      @owner = Owner.new(owner_params)
+     owner = @owner.id.to_s
      if @owner.save
        session[:owner_id] = @owner.id
        redirect_to @owner
