@@ -70,7 +70,6 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
->>>>>>> ba4e0ec60770135122f119b04f33f5d107fcca55
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
