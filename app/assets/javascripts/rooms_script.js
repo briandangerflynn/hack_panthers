@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $('#borough').change(function(){
-    if($(this).val() === "All"){
+    if($(this).val() == "All"){
       console.log($(this).val())
       var boroughs = ["Bronx", "Brooklyn", "Manhattan", "Staten Island", "Queens"]}
       //TODO add all boroughs

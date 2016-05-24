@@ -7,6 +7,8 @@ class RoomsController < ApplicationController
       render json: @rooms
     else
       @rooms = Room.all
+
+
     end
   end
 
