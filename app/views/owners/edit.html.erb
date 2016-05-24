@@ -79,8 +79,10 @@
     <%= f.text_field :description, value: @owner.description %>
     <br /><br />
 
+
+    <%= f.check_box :has_pets, {}, "true", "false" %>
     <%= f.label :has_pets %>
-    <%= f.text_field :has_pets, value: @owner.has_pets %>
+
     <br /><br />
 
     <%= f.text_field :video_url, :id=>'video_token', :value => @owner.video_url, :type => 'hidden' %>
