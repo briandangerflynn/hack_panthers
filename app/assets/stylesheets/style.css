@@ -85,6 +85,7 @@
 .video-player-outer{
   background-color: #B3E5FC;
 }
+
 .container{
   margin-bottom: 20%;
 }
@@ -92,6 +93,7 @@
   margin-top: 10%;
   background-color: #B3E5FC;
   padding: 5%;
+  border-radius: 2%;
 }
 
 #roomshowcards{
