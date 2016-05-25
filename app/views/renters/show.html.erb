@@ -65,7 +65,7 @@
       <br><br><br><br>
         <h3 class="center-align">Rooms You've Liked</h3>
           <br><br>
-        <% if @room_ids == "" %>
+        <% if @room_ids == "" || @room_ids == 'undefined' %>
           <div>
             <h4><%"You haven't liked any rooms yet"%></h4>
           </div>
@@ -97,10 +97,12 @@
 <div class="center-align">
   <%= link_to 'Edit Profile', edit_renter_path(@renter), :id=>'whitebutton' %>
 </div>
+
 <br><br><br><br>
 <div class="center-align">
   <%= link_to 'Delete Account', @renter, method: :delete, :id=>'whitebutton' %>
 </div>
   <br><br><br><br>
 <% end %>
+
 

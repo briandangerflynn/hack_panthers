@@ -55,7 +55,7 @@
         $('#recorded-vid').html("")
         popup.hidePopup();
         var image_url = ZiggeoApi.Videos.image(token);
-        $("#thumbnail").attr("src",image_url);
+        $("#thumbnail").val(image_url);
         $("#video_token").val(token)
         $("#recorded-vid").append("<ziggeo ziggeo-width='360' ziggeo-height='270' ziggeo-video='" + token + "'></ziggeo>");
     });
