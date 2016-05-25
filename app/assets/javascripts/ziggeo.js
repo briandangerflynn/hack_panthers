@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-ZiggeoApi.token = "6ef5913be130768e53a177d593175dce";
+// ZiggeoApi.token = "6ef5913be130768e53a177d593175dce";
 
 ZiggeoApi.Videos.index({}, {
             success: function (args, videos) {
