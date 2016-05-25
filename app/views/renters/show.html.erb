@@ -5,7 +5,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_renter %>
             <li><a href="/" class="navlink">Home</a></li>
-            <li><a href="/renter/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
+            <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
             <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
           <% else %>
             <li><a href="/" class="navlink">Home</a></li>
@@ -21,7 +21,7 @@
 
 
  <div class="profile-page">
-    <div class="section">
+    <div class="section center-align">
         <p class="profile-name"><%= @renter.name %></p>
     </div>
 
@@ -53,6 +53,12 @@
 
       </div>
     </div>
+    </div>
+    <br><br>
+    <div class="center-align">
+      <%= link_to "Back to Available Rooms", rooms_path, :id=>'whitebutton' %>
+    </div>
+
 
 <% if current_renter && current_renter.email == @renter.email %>
     <div class="row" id="allapts">
@@ -86,21 +92,19 @@
             </div>
           <% end %>
         <% end %>
+        </div>
 
-
-
-  <div class="row">
-      <div class="col s10 offset-s1">
-
-          <button><%= link_to 'Edit Profile', edit_renter_path(@renter) %></button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s10 offset-s1">
-          <button><%= link_to 'Delete Account', @renter, method: :delete %></button>
+<div class="center-align">
+  <%= link_to 'Edit Profile', edit_renter_path(@renter), :id=>'whitebutton' %>
+</div>
+<<<<<<< HEAD
+</div>
+=======
+<br><br><br><br>
+<div class="center-align">
+  <%= link_to 'Delete Account', @renter, method: :delete, :id=>'whitebutton' %>
+</div>
+  <br><br><br><br>
 <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+
+>>>>>>> 7e9573ebdfdb64129004b70b9d759a291211c42a
