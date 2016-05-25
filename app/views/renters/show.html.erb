@@ -56,31 +56,37 @@
 
 <% if current_renter && current_renter.email == @renter.email %>
     <div class="row" id="allapts">
-    <br><br><br><br>
-  <h3 class="center-align">Rooms You've Liked</h3>
-  <br><br>
-    <% @room_ids.each do |id| %>
-      <% room = Room.find(id) %>
-      <div class="col s4">
-        <div class="card small">
-          <div class="card-image">
-            <img class="activator" src="<%=room['thumbnail_url']%>">
+      <br><br><br><br>
+        <h3 class="center-align">Rooms You've Liked</h3>
+          <br><br>
+        <% if @room_ids == "" %>
+          <div>
+            <h4><%"You haven't liked any rooms yet"%></h4>
           </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= room['title'] %></span>
-              <p id="roomcards">$<%=room['price']%></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4"><a href="/rooms/<%= room['id'] %>"><%= room['title'] %></a></span>
-              <p id="roomcards">$<%= room['price'] %> per month</p>
-              <p id="roomcards"><%= room['borough'] %></p>
-              <p id="roomcards"><%= room['description'] %></p>
-              <i class="card-title activator" id="closelink">close</i>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+        <% else %>
+          <% @room_ids.each do |id| %>
+            <% room = Room.find(id) %>
+            <div class="col s4">
+              <div class="card small">
+                <div class="card-image">
+                  <img class="activator" src="<%=room['thumbnail_url']%>">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4" id="roomcardtitle"><%= room['title'] %></span>
+                  <p id="roomcards">$<%=room['price']%></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><a href="/rooms/<%= room['id'] %>"><%= room['title'] %></a></span>
+                  <p id="roomcards">$<%= room['price'] %> per month</p>
+                  <p id="roomcards"><%= room['borough'] %></p>
+                  <p id="roomcards"><%= room['description'] %></p>
+                  <i class="card-title activator" id="closelink">close</i>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
 
 
   <div class="row">
@@ -92,7 +98,7 @@
     <div class="row">
       <div class="col s10 offset-s1">
           <button><%= link_to 'Delete Account', @renter, method: :delete %></button>
-        <% end %>
+<% end %>
       </div>
     </div>
   </div>

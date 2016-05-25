@@ -55,7 +55,7 @@
 
 <% if current_renter %>
        <%= form_for @room, url: {action: 'update'} do |f| %>
-           <%= f.text_field :renter_ids, :value=>@room['renter_ids'], :type=>'hidden' %><br><br>
+           <%= f.text_field :renter_ids, :value=>@room['renter_ids']%><br><br>
            <%= f.text_field :room_id, :value=>@room['id'], :type=>'hidden' %>
            <%= f.submit "LIKE THIS ROOM" %>
          <% end %>
