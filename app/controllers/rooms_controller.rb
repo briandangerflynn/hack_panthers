@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   def index
     if filter = params[:filter]
       # Explore named scopes @rooms = Room.by_borough(filter =
-      @rooms = Room.where('borough IN (?)', filter)
+      @rooms = Room.where('borough IN (?)', filter).order('rooms.updated_at DESC').all
       render json: @rooms
     else
       @rooms = Room.all
