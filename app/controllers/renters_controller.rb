@@ -4,11 +4,11 @@ class RentersController < ApplicationController
   end
 
   def show
-    @renter = Renter.find(params[:id])
+    @renter = Renter.find_by(params[:id])
       if @renter['room_ids'] == nil
         room_ids = ""
       else
-        room_ids = @renter['room_ids'].split("|")
+        room_ids = @renter['room_ids'].split("|").drop(1)
       end
     @room_ids = room_ids
   end
@@ -18,10 +18,10 @@ class RentersController < ApplicationController
   end
 
   def create
-     renter = Renter.new(renter_params)
-     if renter.save
-       session[:renter_id] = renter.id
-       redirect_to '/rooms'
+     @renter = Renter.new(renter_params)
+     if @renter.save
+       session[:renter_id] = @renter.id
+       redirect_to @renter
      else
        redirect_to '/renters/signup'
      end
@@ -32,13 +32,13 @@ class RentersController < ApplicationController
   end
 
   def update
-    @renter = Renter.find(params[:id])
+    @renter = Renter.find_by(params[:id])
     @renter.update_attributes(renter_params)
     redirect_to @renter
   end
 
   def destroy
-    @renter = Renter.find(params[:id])
+    @renter = Renter.find_by(params[:id])
     session.clear
     @renter.destroy
     redirect_to '/renters/signup'
