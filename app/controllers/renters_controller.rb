@@ -4,7 +4,7 @@ class RentersController < ApplicationController
   end
 
   def show
-    @renter = Renter.find_by(params[:id])
+    @renter = Renter.find(params[:id])
       if @renter['room_ids'] == nil
         room_ids = ""
       else
@@ -32,7 +32,7 @@ class RentersController < ApplicationController
   end
 
   def update
-    @renter = Renter.find_by(params[:id])
+    @renter = Renter.find(params[:id])
     @renter.update_attributes(renter_params)
     redirect_to @renter
   end
