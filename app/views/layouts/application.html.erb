@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>HackPanthers</title>
-    <link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
-    <script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
-    <script>ZiggeoApi.token = "acf76837b0119f917899fd2bc3add2a9";</script>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <html>
+    <head>
+      <title>HackPanthers</title>
+        <link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
+        <script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
+        <script>ZiggeoApi.token = "acf76837b0119f917899fd2bc3add2a9";</script>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+  <body>
 
 
 <%= yield %>
 
-  <footer id="footer">
-    <p>&copy; 2016 &thinsp;&mdash;&thinsp; Hack Panthers</p>
-  </footer>
-</body>
+  </body>
+      <div class="row">
+        <div class="col s12">
+          <p id="footer">&copy; 2016 &thinsp;&mdash;&thinsp; Hack Panthers</p>
+        </div>
+      </div>
 </html>

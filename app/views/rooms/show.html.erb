@@ -20,18 +20,15 @@
 <div class="row">
 <div class="container center-align">
   <div class="roomshowcontent">
-  <h2><%= @room.title %></h2><br>
-  <div class="center-align">
-      <ziggeo ziggeo-video=<%= @room.video_url %>
-              ziggeo-width=900
-              ziggeo-height=506>
-      </ziggeo>
-      </div>
+  <h2><%= @room.title %></h2><br><br><br>
+        <ziggeo ziggeo-video=<%= @room.video_url %>
+                ziggeo-width=900
+                ziggeo-height=506>
+        </ziggeo>
 
       <div class="row" id="roomshowcards">
-        <div class="col s8" id="leftcard">
-            <div class="white-text grey">
-              <span class="title">$<%= @room.price %></span>
+            <div class="center-align">
+              <span class="title">$<%= @room.price %> per month</span>
               <p>Located in <%= @room.neighborhood %>, <%=@room.borough%>
               <br>
                 <%= @room.address %>
@@ -48,18 +45,18 @@
               <% else %>
                 <p class="card-content">Room available: No</p>
               <% end %>
-            </div>
-
           </div>
-          </div>
+        </div>
+      </div>
 
 <% if current_renter %>
        <%= form_for @room, url: {action: 'update'} do |f| %>
-           <%= f.text_field :renter_ids, :value=>@room['renter_ids']%><br><br>
+           <%= f.text_field :renter_ids, :value=>@room['renter_ids'], :type=>'hidden'%><br><br>
            <%= f.text_field :room_id, :value=>@room['id'], :type=>'hidden' %>
-           <%= f.submit "LIKE THIS ROOM" %>
+           <%= f.submit "Like this Room", :id=>'likebutton'%>
          <% end %>
 <% end %>
+<br><br><br>
 
 
 <% if current_owner && current_owner.id == @room['user_id'] %>
@@ -91,9 +88,28 @@
         </div>
 
 
+      <% end %>
     <% end %>
-<% end %>
   </div>
-
-
 <% end %>
+
+<%= link_to 'Back', :back, :id=>'whitebutton'%>
+<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

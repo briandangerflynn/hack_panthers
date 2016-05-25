@@ -76,9 +76,9 @@
 }
 /* _________________________________ */
 /* ROOMS SHOW PAGE */
-/* .video-player-outer{
-padding-left: 30%;
-} */
+#cid_5{
+  margin-right:-30%;
+}
 .video-player-content{
   margin-left: 10%;
 
@@ -92,14 +92,15 @@ padding-left: 30%;
   padding: 5%;
 }
 
-#leftcard, #rightcard {
-    min-height: 200px;
-    padding-bottom: 20px;
-    height: auto;
+#roomshowcards{
+  padding: 3%;
+  margin-top: 5%;
+  color:white;
+  background-color: #727272;
 }
-#roomshowcard{
-  height: 250px;
-  margin-top: 10%;
+span.title{
+  font-size: 20px;
+  color: #B3E5FC;
 }
 .card-content{
 margin: auto;
@@ -112,3 +113,42 @@ margin: auto;
   background-color: rgb(40, 40, 40);
   height: 70px;
 }
+#likebutton{
+  font-size: 30px;
+  color: #7C4DFF;
+  padding: 1%;
+  border: 4px solid #7C4DFF;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#bluebutton{
+ font-size: 20px;
+  color: #7C4DFF;
+  padding: 1%;
+  border: 3px solid #7C4DFF;
+  background-color: #B3E5FC;
+  border-radius: 5px;
+}
+
+#whitebutton{
+  font-size: 20px;
+  color: #7C4DFF;
+  padding: 1%;
+  border: 3px solid #7C4DFF;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5% 0% 5% 0%;
+}
+
+/* RENTERS SHOW PAGE  */
+button#record{
+  font-size: 20px;
+  color: #7C4DFF;
+  padding: 1%;
+  border: 3px solid #7C4DFF;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5% 0% 5% 0%;
+}
+

@@ -86,7 +86,7 @@
 
     <%= f.text_field :video_url, :id=>'video_token', :value => @renter.video_url, :type => 'hidden' %>
 
-    <%= f.submit %>
+    <%= f.submit "Submit Your Changes", :class=>'left-align', :id=>'whitebutton'%>
   <% end %>
   <br>
   <%= link_to 'cancel', @renter %>
