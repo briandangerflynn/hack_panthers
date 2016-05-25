@@ -15,12 +15,16 @@ class RoomsController < ApplicationController
     @room = Room.find_by_id(id)
 
       if @room['renter_ids'] == nil
-        renter_ids = ""
+        user_id = session[:renter_id]
+        user = Renter.find_by_id(user_id)
+        renter_ids = "#{user_id}"
+
       else
-        renter_ids = @room['renter_ids'].split("|").drop(1)
+        renter_ids = @room['renter_ids'].split("|")
       end
 
     @renter_ids = renter_ids
+
   end
 
   def new
@@ -48,12 +52,17 @@ class RoomsController < ApplicationController
     user_id = session[:renter_id]
     user = Renter.find_by_id(user_id)
     room_id = params['room']['room_id']
-    room_string = "#{user['room_ids']}|#{room_id}"
+    room_string = "#{user['room_ids']}|#{room_id}".split("|")
+    room_string = room_string.join("|")
     user.update(room_ids: room_string)
 
 
     room_likes = @room.renter_ids
-    room_likes += "|#{user_id}"
+    if room_likes == nil
+      room_likes == ""
+    else
+      room_likes += "|#{user_id}"
+    end
     @room.update(renter_ids: room_likes)
 
 

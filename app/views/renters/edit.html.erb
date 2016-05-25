@@ -3,14 +3,14 @@
     <div class="nav-wrapper">
       <a href='/' id="navlogo"><%= image_tag("homeologo.svg", class: 'homeo')%></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if current_owner %>
+          <% if current_renter %>
             <li><a href="/" class="navlink">Home</a></li>
-            <li><a href="/owners/<%= current_owner.id %>">Signed in as <%= current_owner.email %></a></li>
+            <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
             <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
           <% else %>
             <li><a href="/" class="navlink">Home</a></li>
-            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
-            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+            <li><%= link_to 'Login', '/renterlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Signup', '/renters/signup', :class=>"navlink" %></li>
           <% end %>
         </ul>
     </div>
