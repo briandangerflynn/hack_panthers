@@ -80,7 +80,7 @@
   margin-right:-30%;
 } */
 .video-player-content{
-  margin-left: 15%;
+  margin-left: 17%;
 }
 .video-player-outer{
   background-color: #B3E5FC;
@@ -96,9 +96,9 @@
 
 #roomshowcards{
   padding: 3%;
-  margin-top: 5%;
   color:white;
   background-color: #727272;
+  margin: 5% 14% 5% 14%;
 }
 span.title{
   font-size: 20px;
