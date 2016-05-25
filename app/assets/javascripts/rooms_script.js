@@ -9,6 +9,7 @@ $(document).ready(function() {
       var boroughs = $(this).val();
     }
 
+
     $.ajax({
       method: "GET",
       url: "/rooms",
