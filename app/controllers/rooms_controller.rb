@@ -13,18 +13,16 @@ class RoomsController < ApplicationController
   def show
     id = params[:id]
     @room = Room.find_by_id(id)
-
       if @room['renter_ids'] == nil
         user_id = session[:renter_id]
         user = Renter.find_by_id(user_id)
         renter_ids = "#{user_id}"
 
       else
-        renter_ids = @room['renter_ids'].split("|")
+        renter_ids = @room['renter_ids'].split("|").drop(1)
       end
 
     @renter_ids = renter_ids
-
   end
 
   def new
