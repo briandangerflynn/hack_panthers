@@ -76,12 +76,14 @@
 }
 /* _________________________________ */
 /* ROOMS SHOW PAGE */
-#cid_5{
+/* #cid_5{
   margin-right:-30%;
-}
+} */
 .video-player-content{
-  margin-left: 10%;
-
+  margin-left: 15%;
+}
+.video-player-outer{
+  background-color: #B3E5FC;
 }
 .container{
   margin-bottom: 20%;
