@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   def index
     if filter = params[:filter]
       # Explore named scopes @rooms = Room.by_borough(filter =
-      @rooms = Room.where('borough IN (?)', filter)
+      @rooms = Room.where('borough IN (?)', filter).order('rooms.updated_at DESC').all
       render json: @rooms
     else
       @rooms = Room.all
@@ -47,12 +47,12 @@ class RoomsController < ApplicationController
     id = params[:id]
     @room = Room.find_by_id(id)
 
-    user_id = session[:renter_id]
-    user = Renter.find_by_id(user_id)
-    room_id = params['room']['room_id']
-    room_string = "#{user['room_ids']}|#{room_id}".split("|")
-    room_string = room_string.join("|")
-    user.update(room_ids: room_string)
+    # user_id = session[:renter_id]
+    # user = Renter.find_by_id(user_id)
+    # room_id = params['room']['room_id']
+    # room_string = "#{user['room_ids']}|#{room_id}".split("|")
+    # room_string = room_string.join("|")
+    # user.update(room_ids: room_string)
 
 
     room_likes = @room.renter_ids

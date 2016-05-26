@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
+9a95cf8a3aab6600613e3de746e4340debb3af61
 
 ZiggeoApi.Videos.index({}, {
             success: function (args, videos) {
