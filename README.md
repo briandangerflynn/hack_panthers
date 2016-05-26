@@ -44,7 +44,7 @@ $("#record").on("click", function () {
 - Brian “Danger” Flynn (github handle: briandangerflynn)
 
 ### References
-> Trello: (https://trello.com/b/jrvbsVnB/hack-panthers)
+> Trello: https://trello.com/b/jrvbsVnB/hack-panthers
 
 
 
