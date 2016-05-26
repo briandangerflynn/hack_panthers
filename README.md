@@ -22,8 +22,9 @@ ziggeo>
 
 ~~~~
 
-> as well as jQuery to activate the recorder:
+As well as jQuery to activate the recorder:
 
+~~~~
 
 $("#record").on("click", function () {
  console.log("button works")
@@ -34,6 +35,7 @@ $("#record").on("click", function () {
  });
  });
 
+~~~~
 
 #### Homeo, LLC was founded and orchestrated by:
 - Ralph Acevedo (github handle: RalphJulien)
