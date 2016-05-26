@@ -1,4 +1,4 @@
-== README
+
 
 
 # Hack Panthers
@@ -12,14 +12,14 @@ themselves while they review all the available rooms that an owner has to offer 
 Homeo is powered with the Ziggeo API for video playback and record. The recorder/player is embedded with a few lines of code.  The
 player code is included within HTML “<ziggeo>” tags:
 
-<ziggeo ziggeo-video=<%= var_of_video_to_play %>
+ziggeo ziggeo-video=<%= var_of_video_to_play
  ziggeo-width=320
- ziggeo-height=240>
-</ziggeo>
+ ziggeo-height=240
+ziggeo
 
 > as well as jQuery to activate the recorder:
 
-<script>
+
 $("#record").on("click", function () {
  console.log("button works")
  popup = ZiggeoApi.Embed.popup({
@@ -28,7 +28,7 @@ $("#record").on("click", function () {
  limit: 120
  });
  });
-</script>
+
 
 #### Homeo, LLC was founded and orchestrated by:
 - Ralph Acevedo (github handle: RalphJulien)
