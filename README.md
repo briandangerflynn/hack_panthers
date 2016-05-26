@@ -12,11 +12,15 @@ themselves while they review all the available rooms that an owner has to offer 
 Homeo is powered with the Ziggeo API for video playback and record. The recorder/player is embedded with a few lines of code.  The
 player code is included within HTML “<ziggeo>” tags:
 
-ziggeo ziggeo-video=
+~~~~
+
+<ziggeo ziggeo-video=
 <%= var_of_video_to_play %>
  ziggeo-width=320
  ziggeo-height=240
-ziggeo
+ziggeo>
+
+~~~~
 
 > as well as jQuery to activate the recorder:
 
