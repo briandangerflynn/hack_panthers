@@ -15,7 +15,7 @@
  */
 
 
-body {
+body, html {
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -88,11 +88,15 @@ div#headerbar {
   text-align: center;
   background-color: rgb(40, 40, 40);
   height: 5vh;
-  color: white;
-  margin: 0;
-  position: absolute;
-  bottom: 0px;
   width: 100%;
+  color: white;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+  margin: 0;
 }
 
 #footer p {
