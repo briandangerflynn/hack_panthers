@@ -17,8 +17,8 @@
   </div>
 </nav>
 
-<div class="container">
-<h3>Update <%= @room.title %></h3>
+
+  <h3>Update <%= @room.title %></h3>
 
   <% if @room.video_url == nil %>
     <p>Create a video showing off your apartment and your available room to renters.</p>
@@ -30,16 +30,16 @@
 
   <br><br>
 
-<script>
-  $("#record").on("click", function () {
-      console.log("button works")
-      popup = ZiggeoApi.Embed.popup({
-          width: 450,
-          height: 280,
-          limit: 120
-      });
-  });
-</script>
+  <script>
+    $("#record").on("click", function () {
+        console.log("button works")
+        popup = ZiggeoApi.Embed.popup({
+            width: 450,
+            height: 280,
+            limit: 120
+        });
+    });
+  </script>
 
 <p>Current Rental Room Video:</p>
   <div id="recorded-vid">
@@ -116,4 +116,3 @@
 <%= link_to 'Delete', @room, method: :delete %>
 <br>
 
-</div>

@@ -14,8 +14,11 @@
  *= require_self
  */
 
-body {
+
+body, html {
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,7 +34,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: url('http://properlocations.com/wp-content/uploads/2011/04/hp_featured_NYC0203.png');
   background-size: cover;
   background-repeat: no-repeat;
-  padding-bottom: 50px;
   text-shadow: 1px 1px black;
   height: 95vh;
 }
@@ -86,7 +88,15 @@ div#headerbar {
   text-align: center;
   background-color: rgb(40, 40, 40);
   height: 5vh;
+  width: 100%;
   color: white;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+  margin: 0;
 }
 
 #footer p {
