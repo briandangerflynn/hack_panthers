@@ -76,6 +76,9 @@ class RoomsController < ApplicationController
   end
 
   def user_type
+    if current_owner = ""
+      reset_session
+    end
   end
 
   private

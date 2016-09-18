@@ -17,7 +17,7 @@
   </div>
 </nav>
 
-
+<div class="body-page-margin">
   <h3>Update <%= @room.title %></h3>
 
   <% if @room.video_url == nil %>
@@ -106,9 +106,9 @@
   <%= f.text_field :video_url, :id=>'video_token', :value => '', :type => 'hidden' %>
   <%= f.text_field :user_id, :value=>current_owner.id, :type => 'hidden' %>
   <br>
-  <%= f.text_field :renter_ids, :value=>""%>
+  <%= f.text_field :renter_ids, :value=>"", :type=> 'hidden'%>
 
- <%= f.submit "Update Room" %>
+<button> <%= f.submit "Update Room" %> </button>
 <% end %>
 
 <button> <%= link_to 'Cancel', '/rooms' %></button>
@@ -116,3 +116,4 @@
 <%= link_to 'Delete', @room, method: :delete %>
 <br>
 
+</div>

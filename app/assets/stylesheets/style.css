@@ -140,6 +140,9 @@ margin: auto;
   border-radius: 5px;
   margin: 5% 0% 5% 0%;
 }
+.body-page-margin{
+  margin: 10%;
+}
 
 /* RENTERS SHOW PAGE  */
 button#record{
