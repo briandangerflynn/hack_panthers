@@ -60,7 +60,8 @@
         </ul>
         <% if current_owner && current_owner.email == @owner.email %>
 
-          <button><%= link_to 'Add New Room to Rent', new_room_path %></button>
+          <%= link_to 'Add New Room to Rent', new_room_path, :id=>'whitebutton'%>
+            <br>
         <% end %>
       </div>
     </div>
@@ -68,12 +69,13 @@
       <div class="col s10 offset-s1">
 
         <% if current_owner && current_owner.email == @owner.email %>
-          <button><%= link_to 'Edit Profile', edit_owner_path(@owner) %></button>
+          <%= link_to 'Edit Profile', edit_owner_path(@owner), :id=>'whitebutton'%>
+          <br><br>
       </div>
     </div>
     <div class="row">
       <div class="col s10 offset-s1">
-          <button><%= link_to 'Delete Account', @owner, method: :delete %></button>
+          <%= link_to 'Delete Account', @owner, method: :delete, :id=>'whitebutton'%>
         <% end %>
       </div>
     </div>
