@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
       @rooms = Room.where('borough IN (?)', filter).order('rooms.updated_at DESC').all
       render json: @rooms
     else
-      @rooms = Room.all
+      @rooms = Room.order('rooms.updated_at DESC').all
     end
   end
 

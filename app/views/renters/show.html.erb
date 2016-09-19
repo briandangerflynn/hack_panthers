@@ -5,7 +5,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_renter %>
             <li><a href="/" class="navlink">Home</a></li>
-            <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.email %></a></li>
+            <li><a href="/renters/<%= current_renter.id %>">Signed in as <%= current_renter.name.capitalize %></a></li>
             <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
           <% else %>
             <li><a href="/" class="navlink">Home</a></li>
@@ -22,7 +22,7 @@
 
  <div class="profile-page">
     <div class="section center-align">
-        <p class="profile-name"><%= @renter.name %></p>
+        <p class="center-align profile-name"><%= @renter.name.capitalize %></p>
     </div>
 
     <div class="row profile-main">
