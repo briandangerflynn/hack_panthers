@@ -13,8 +13,10 @@
             <li><%= link_to "Logout", '/renterlogout', :class=>"navlink" %></li>
           <% else %>
             <li><a href="/" class="navlink">Home</a></li>
-            <li><%= link_to 'Login', '/ownerlogin' , :class=>"navlink" %></li>
-            <li><%= link_to 'Signup', '/owners/signup', :class=>"navlink" %></li>
+            <li><%= link_to 'Owner Login', '/ownerlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Owner Signup', '/owners/signup', :class=>"navlink" %></li>
+            <li><%= link_to 'Renter Login', '/renterlogin' , :class=>"navlink" %></li>
+            <li><%= link_to 'Renter Signup', '/renters/signup', :class=>"navlink" %></li>
           <% end %>
         </ul>
     </div>
