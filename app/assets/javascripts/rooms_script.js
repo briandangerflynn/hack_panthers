@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  console.log('script loaded')
+  console.log('rooms_script loaded')
   $('#borough').val("All")
   $('#borough').change(function(){
     if($(this).val() == "All"){
