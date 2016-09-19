@@ -38,33 +38,34 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    @room = Room.find_by_id(params[:id])
+    @room = Room.find_by(id: params[:id])
 
   end
 
   def update
-    id = params[:id]
-    @room = Room.find_by_id(id)
-
-    user_id = session[:renter_id]
-    user = Renter.find_by_id(user_id)
-    room_id = params['room']['room_id']
-    room_string = "#{user['room_ids']}|#{room_id}".split("|")
-    room_string = room_string.join("|")
-    user.update(room_ids: room_string)
 
 
-    room_likes = @room.renter_ids
-    if room_likes == nil
-      room_likes == "#{user_id}"
-    else
-      room_likes += "|#{user_id}"
-    end
-    @room.update(renter_ids: room_likes)
+    @room = Room.find_by(id: params[:id])
+    @room.update_attributes(room_params)
+
+    # user_id = session[:renter_id]
+    # user = Renter.find_by_id(user_id)
+    # room_id = params['room']['room_id']
+    # room_string = "#{user['room_ids']}|#{room_id}".split("|")
+    # room_string = room_string.join("|")
+    # user.update(room_ids: room_string)
 
 
-    redirect_to "/rooms/#{id}"
+    # room_likes = @room.renter_ids
+    # if room_likes == nil
+    #   room_likes == "#{user_id}"
+    # else
+    #   room_likes += "|#{user_id}"
+    # end
+    # @room.update(renter_ids: room_likes)
+
+
+    redirect_to "/rooms/#{@room.id}"
     # redirect_to(:back)
   end
 
