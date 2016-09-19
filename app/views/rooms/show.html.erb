@@ -22,15 +22,17 @@
 </nav>
   <div class="row">
   <div class="center-align">
-    <div class="roomshowcontent">
+    <div class="center-align roomshowcontent">
     <h2><%= @room.title %></h2><br><br><br>
-        <ziggeo ziggeo-video=<%= @room.video_url %>
+      <img class="center-align video-player-content"/>
+        <ziggeo
+                ziggeo-video=<%= @room.video_url %>
                 ziggeo-width=900
                 ziggeo-height=506>
         </ziggeo>
 
       <div class="row" id="roomshowcards">
-        <div class=" center-align">
+        <div class="center-align">
           <span class="title">$<%= @room.price %> per month</span>
           <p>Located in <%= @room.neighborhood %>, <%=@room.borough%>
           <br>

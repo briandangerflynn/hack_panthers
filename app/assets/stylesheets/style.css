@@ -79,6 +79,11 @@
 
 .video-player-outer{
   background-color: #B3E5FC;
+  left: 35%;
+}
+.video-player-content{
+
+  /* padding-left: 20%; */
 }
 
 .roomshowcontent{
