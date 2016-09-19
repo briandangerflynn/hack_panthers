@@ -17,14 +17,14 @@ $(document).ready(function() {
       url: "/rooms",
       data: { filter: boroughs },
       success: function(data){
-        $("#rooms-test").html("")
+        $("#rooms-list").html("")
         console.log(data[0]);
         data.forEach(function(room){
-          $("#rooms-test").append(
+          $("#rooms-list").append(
               `<div class='col s4'>
                 <div class='card small'>
                   <div class='card-image'>
-                    <img class='activator' src="room['thumbnail_url']">
+                    <img class='activator' src="` + room['thumbnail_url']+ `">
                   </div>
                   <div class='card-content'>
                     <span class='card-title activator grey-text text-darken-4' id='roomcardtitle'>`+ room['title'] + `
